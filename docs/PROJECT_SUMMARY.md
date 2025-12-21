@@ -1,101 +1,82 @@
-# Skillspark - Project Summary
+# SkillSpark - Project Summary
 
 ## 🎯 Vision Statement
 
-Skillspark is an AI-enhanced Learning Management System that empowers organizations to deliver cutting-edge educational experiences through intelligent tools, personalized learning analytics, and seamless content creation.
+SkillSpark (技撚星火) is an informative website that empowers educators by introducing practical AI tools and providing educational resources. We showcase various AI tools, offer offline workshops and online courses, and leverage AI to generate SEO-optimized content.
 
 ## 🏢 Business Model
 
 ### Target Market
-- **Primary**: Educational institutions and corporate training organizations
-- **Secondary**: Independent educators and content creators
-- **Tertiary**: Enterprise teams requiring skill development tracking
+- **Primary**: Educators and teachers in Hong Kong
+- **Secondary**: Students and professionals interested in AI tools
+- **Tertiary**: Organizations seeking AI training
 
-### Revenue Model
-- **B2B SaaS**: Organization-based licensing
-- **Usage-based AI credits** for premium features
-- **Professional services** for custom implementations
+### Value Proposition
+- **Comprehensive AI Tool Directory**: Detailed information about various AI tools (Gamma, Animaker, meeting minutes tool, etc.)
+- **Practical Education**: Offline workshops and online courses for hands-on learning
+- **AI-Powered Content**: Automated content generation for SEO and blog posts
+- **Bilingual Support**: Traditional Chinese and English content
 
-## 🔧 Core Problem Solving
+## 🔧 Core Features
 
-### Teacher Pain Points
-- ❌ Time-consuming content creation
-- ❌ Limited engagement tools
-- ❌ Difficulty tracking student progress
-- ❌ Manual grading and feedback
+### AI Tools Showcase
+- Comprehensive tool pages with descriptions, features, use cases
+- Pricing information and comparisons
+- Tutorials, screenshots, and demo videos
+- Admin management interface
 
-### Student Pain Points  
-- ❌ One-size-fits-all learning paths
-- ❌ Lack of skill recognition
-- ❌ Limited interaction with content
-- ❌ No clear career progression mapping
+### Lesson Management
+- **Online Lessons**: Video hosting, content pages, progress tracking
+- **Offline Lessons**: Physical workshops with registration
+- **Hybrid Lessons**: Recordings available after physical events
+- Student registration and progress tracking
+- Teacher lesson creation and management
 
-### Skillspark Solutions
-- ✅ AI-powered content generation (avatars, videos, assessments)
-- ✅ Intelligent progress tracking and analytics
-- ✅ LinkedIn-style skill profiling for STEM/technology
-- ✅ Personalized learning recommendations
-- ✅ Automated grading and feedback systems
+### Blog & Content
+- AI guides and tutorials
+- SEO-optimized blog posts
+- AI-generated content for tools and articles
+- Category and tag organization
+
+### Admin Panel
+- User management (admin, teacher, student, guest roles)
+- AI tools management
+- Lesson management
+- Blog post management
+- Page builder for custom pages
+- Image library management
+- AI content generation controls
 
 ## 🎯 Unique Value Propositions
 
-### 1. All-in-One AI Hub for Educators
-- Integrated AI avatar creation (D-ID)
-- Video generation tools (Luma/RunwayML)
-- Speech-to-text and text-to-speech (Whisper)
-- Automated content creation
+### 1. Comprehensive AI Tool Directory
+- Detailed information about practical AI tools
+- Real-world use cases and tutorials
+- Comparison with alternatives
 
-### 2. Intelligent Student Profiling
-- Behavioral learning analytics
-- Technology skill mapping
-- Career path recommendations
-- Integration with professional platforms (LinkedIn, GitHub)
+### 2. Practical Education
+- Hands-on offline workshops
+- Self-paced online courses
+- Progress tracking and analytics
 
-### 3. Master AI Analytics Engine
-- Platform-wide learning pattern analysis
-- Predictive student success modeling
-- Content optimization recommendations
-- ROI tracking for organizations
+### 3. AI-Powered Content Generation
+- Automated blog post generation
+- SEO optimization
+- Tool description generation
+- Image generation for content
 
 ## 📊 Success Metrics
 
-### Phase 1 (MVP - 6 months)
-- 5-10 pilot organizations
-- 500+ active users
-- Core LMS functionality complete
-- Basic AI features operational
+- Number of AI tools showcased
+- User registrations for lessons
+- Blog post views and engagement
+- Content generation usage
+- User satisfaction ratings
 
-### Phase 2 (Growth - 12 months)
-- 50+ organizations
-- 5,000+ active users
-- Advanced AI analytics
-- Mobile application launch
+## 🚀 Future Enhancements
 
-### Phase 3 (Scale - 18 months)
-- 200+ organizations
-- 25,000+ active users
-- White-label solutions
-- API marketplace
-
-## 🎨 Brand Identity
-
-### Brand Values
-- **Innovation**: Cutting-edge AI integration
-- **Accessibility**: User-friendly for all skill levels
-- **Intelligence**: Data-driven insights
-- **Growth**: Continuous learning and improvement
-
-### Visual Identity
-- Modern, clean design aesthetic
-- Technology-forward color palette
-- Minimalist UI with powerful functionality
-- Consistent cross-platform experience
-
-## 🔮 Future Vision
-
-Skillspark aims to become the leading AI-native learning platform, where:
-- Every learning interaction generates actionable insights
-- AI assists in real-time learning optimization
-- Students have clear, data-driven career pathways
-- Organizations achieve measurable training ROI
-- The platform continuously evolves through AI-driven improvements
+- Community features and forums
+- User-generated content
+- Advanced analytics dashboard
+- Mobile app
+- Integration with more AI services

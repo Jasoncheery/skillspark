@@ -1,6 +1,8 @@
-import { BrowserRouter as Router } from 'react-router-dom'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import AppRoutes from './routes/AppRoutes'
+import { BrowserRouter as Router } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import AppRoutes from './routes/AppRoutes';
+import { ToastContainer } from './components/ui/Toast';
+import { useToastStore } from './stores/toastStore';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -10,18 +12,19 @@ const queryClient = new QueryClient({
       retry: 1,
     },
   },
-})
+});
 
 function App() {
+  const { toasts, removeToast } = useToastStore();
+
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <div className="min-h-screen bg-gray-50">
-          <AppRoutes />
-        </div>
+        <AppRoutes />
+        <ToastContainer toasts={toasts} onClose={removeToast} />
       </Router>
     </QueryClientProvider>
-  )
+  );
 }
 
-export default App
+export default App;

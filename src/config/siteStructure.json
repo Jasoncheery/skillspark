@@ -1,0 +1,295 @@
+{
+  "siteName": "SkillSpark",
+  "siteNameChinese": "技撚星火",
+  "navigation": {
+    "main": [
+      {
+        "label": "首頁",
+        "labelEn": "Home",
+        "path": "/",
+        "type": "page"
+      },
+      {
+        "label": "AI 工具",
+        "labelEn": "AI Tools",
+        "path": "/ai-tools",
+        "type": "section",
+        "children": [
+          {
+            "label": "所有工具",
+            "labelEn": "All Tools",
+            "path": "/ai-tools"
+          },
+          {
+            "label": "Gamma",
+            "labelEn": "Gamma",
+            "path": "/ai-tools/gamma"
+          },
+          {
+            "label": "Animaker",
+            "labelEn": "Animaker",
+            "path": "/ai-tools/animaker"
+          },
+          {
+            "label": "會議記錄工具",
+            "labelEn": "Meeting Minutes Tool",
+            "path": "/ai-tools/meeting-minutes"
+          }
+        ]
+      },
+      {
+        "label": "課程",
+        "labelEn": "Lessons",
+        "path": "/lessons",
+        "type": "section",
+        "children": [
+          {
+            "label": "線上課程",
+            "labelEn": "Online Courses",
+            "path": "/lessons/online"
+          },
+          {
+            "label": "線下工作坊",
+            "labelEn": "Offline Workshops",
+            "path": "/lessons/offline"
+          }
+        ]
+      },
+      {
+        "label": "AI 攻略",
+        "labelEn": "AI Guides",
+        "path": "/blog",
+        "type": "section"
+      },
+      {
+        "label": "關於我們",
+        "labelEn": "About",
+        "path": "/about",
+        "type": "page"
+      },
+      {
+        "label": "聯絡我們",
+        "labelEn": "Contact",
+        "path": "/contact",
+        "type": "page"
+      }
+    ],
+    "footer": {
+      "sections": [
+        {
+          "title": "關於 SkillSpark",
+          "titleEn": "About SkillSpark",
+          "links": [
+            {
+              "label": "我們是誰",
+              "labelEn": "Who We Are",
+              "path": "/about"
+            },
+            {
+              "label": "我們的使命",
+              "labelEn": "Our Mission",
+              "path": "/about#mission"
+            },
+            {
+              "label": "聯絡我們",
+              "labelEn": "Contact Us",
+              "path": "/contact"
+            }
+          ]
+        },
+        {
+          "title": "AI 工具",
+          "titleEn": "AI Tools",
+          "links": [
+            {
+              "label": "所有工具",
+              "labelEn": "All Tools",
+              "path": "/ai-tools"
+            },
+            {
+              "label": "Gamma",
+              "labelEn": "Gamma",
+              "path": "/ai-tools/gamma"
+            },
+            {
+              "label": "Animaker",
+              "labelEn": "Animaker",
+              "path": "/ai-tools/animaker"
+            }
+          ]
+        },
+        {
+          "title": "課程",
+          "titleEn": "Lessons",
+          "links": [
+            {
+              "label": "線上課程",
+              "labelEn": "Online Courses",
+              "path": "/lessons/online"
+            },
+            {
+              "label": "線下工作坊",
+              "labelEn": "Offline Workshops",
+              "path": "/lessons/offline"
+            }
+          ]
+        },
+        {
+          "title": "資源",
+          "titleEn": "Resources",
+          "links": [
+            {
+              "label": "AI 攻略",
+              "labelEn": "AI Guides",
+              "path": "/blog"
+            },
+            {
+              "label": "最新活動",
+              "labelEn": "Latest Events",
+              "path": "/events"
+            }
+          ]
+        }
+      ],
+      "social": [
+        {
+          "platform": "facebook",
+          "url": "#",
+          "icon": "facebook"
+        },
+        {
+          "platform": "instagram",
+          "url": "#",
+          "icon": "instagram"
+        },
+        {
+          "platform": "linkedin",
+          "url": "#",
+          "icon": "linkedin"
+        }
+      ]
+    }
+  },
+  "pages": {
+    "home": {
+      "sections": [
+        {
+          "type": "hero",
+          "title": "香港首個 AI 實用教學及應用平台",
+          "titleEn": "Hong Kong's First AI Practical Teaching and Application Platform",
+          "subtitle": "賦能教育工作者，迎接 AI 教學新時代",
+          "subtitleEn": "Empowering educators, embracing a new era of AI teaching",
+          "cta": {
+            "primary": {
+              "label": "探索 AI 工具",
+              "labelEn": "Explore AI Tools",
+              "path": "/ai-tools"
+            },
+            "secondary": {
+              "label": "了解課程",
+              "labelEn": "Learn More",
+              "path": "/lessons"
+            }
+          }
+        },
+        {
+          "type": "features",
+          "title": "我們的服務",
+          "titleEn": "Our Services",
+          "items": [
+            {
+              "title": "AI 工具介紹",
+              "titleEn": "AI Tools Showcase",
+              "description": "深入了解各種實用 AI 工具，從簡報生成到影片製作",
+              "descriptionEn": "Deep dive into practical AI tools, from presentation generation to video creation",
+              "icon": "sparkles",
+              "path": "/ai-tools"
+            },
+            {
+              "title": "線上課程",
+              "titleEn": "Online Courses",
+              "description": "隨時隨地學習 AI 應用技巧，提升教學能力",
+              "descriptionEn": "Learn AI application skills anytime, anywhere, enhance teaching capabilities",
+              "icon": "video",
+              "path": "/lessons/online"
+            },
+            {
+              "title": "線下工作坊",
+              "titleEn": "Offline Workshops",
+              "description": "面對面交流，實戰演練 AI 工具應用",
+              "descriptionEn": "Face-to-face interaction, hands-on practice of AI tool applications",
+              "icon": "users",
+              "path": "/lessons/offline"
+            },
+            {
+              "title": "AI 攻略",
+              "titleEn": "AI Guides",
+              "description": "最新 AI 技術資訊與實用教學內容",
+              "descriptionEn": "Latest AI technology information and practical teaching content",
+              "icon": "book",
+              "path": "/blog"
+            }
+          ]
+        },
+        {
+          "type": "stats",
+          "title": "我們的成果",
+          "titleEn": "Our Achievements",
+          "items": [
+            {
+              "value": "50,000+",
+              "label": "用戶支持",
+              "labelEn": "Users Supported"
+            },
+            {
+              "value": "40+",
+              "label": "企業合作",
+              "labelEn": "Enterprise Partners"
+            },
+            {
+              "value": "100+",
+              "label": "AI 工具",
+              "labelEn": "AI Tools"
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "title": "準備開始您的 AI 教學之旅？",
+          "titleEn": "Ready to Start Your AI Teaching Journey?",
+          "description": "立即探索我們的 AI 工具和課程",
+          "descriptionEn": "Explore our AI tools and courses now",
+          "button": {
+            "label": "立即開始",
+            "labelEn": "Get Started",
+            "path": "/ai-tools"
+          }
+        }
+      ]
+    }
+  },
+  "routes": {
+    "public": [
+      "/",
+      "/ai-tools",
+      "/ai-tools/:slug",
+      "/lessons",
+      "/lessons/online",
+      "/lessons/offline",
+      "/lessons/:id",
+      "/blog",
+      "/blog/:slug",
+      "/about",
+      "/contact",
+      "/login",
+      "/register"
+    ],
+    "protected": [
+      "/dashboard",
+      "/dashboard/admin",
+      "/dashboard/teacher",
+      "/dashboard/student"
+    ]
+  }
+}
+

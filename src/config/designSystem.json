@@ -1,0 +1,151 @@
+{
+  "colors": {
+    "primary": {
+      "blue": {
+        "50": "#EFF6FF",
+        "100": "#DBEAFE",
+        "200": "#BFDBFE",
+        "300": "#93C5FD",
+        "400": "#60A5FA",
+        "500": "#3B82F6",
+        "600": "#2563EB",
+        "700": "#1D4ED8",
+        "800": "#1E40AF",
+        "900": "#1E3A8A"
+      }
+    },
+    "secondary": {
+      "yellow": {
+        "50": "#FEFCE8",
+        "100": "#FEF9C3",
+        "200": "#FEF08A",
+        "300": "#FDE047",
+        "400": "#FACC15",
+        "500": "#EAB308",
+        "600": "#CA8A04",
+        "700": "#A16207",
+        "800": "#854D0E",
+        "900": "#713F12"
+      }
+    },
+    "neutral": {
+      "gray": {
+        "50": "#F9FAFB",
+        "100": "#F3F4F6",
+        "200": "#E5E7EB",
+        "300": "#D1D5DB",
+        "400": "#9CA3AF",
+        "500": "#6B7280",
+        "600": "#4B5563",
+        "700": "#374151",
+        "800": "#1F2937",
+        "900": "#111827"
+      }
+    },
+    "semantic": {
+      "success": "#10B981",
+      "error": "#EF4444",
+      "warning": "#F59E0B",
+      "info": "#3B82F6"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "sans": ["Inter", "system-ui", "sans-serif"],
+      "display": ["Inter", "system-ui", "sans-serif"]
+    },
+    "fontSize": {
+      "xs": ["0.75rem", { "lineHeight": "1rem" }],
+      "sm": ["0.875rem", { "lineHeight": "1.25rem" }],
+      "base": ["1rem", { "lineHeight": "1.5rem" }],
+      "lg": ["1.125rem", { "lineHeight": "1.75rem" }],
+      "xl": ["1.25rem", { "lineHeight": "1.75rem" }],
+      "2xl": ["1.5rem", { "lineHeight": "2rem" }],
+      "3xl": ["1.875rem", { "lineHeight": "2.25rem" }],
+      "4xl": ["2.25rem", { "lineHeight": "2.5rem" }],
+      "5xl": ["3rem", { "lineHeight": "1" }],
+      "6xl": ["3.75rem", { "lineHeight": "1" }]
+    },
+    "fontWeight": {
+      "normal": "400",
+      "medium": "500",
+      "semibold": "600",
+      "bold": "700"
+    }
+  },
+  "spacing": {
+    "scale": "0.25rem",
+    "values": {
+      "0": "0",
+      "1": "0.25rem",
+      "2": "0.5rem",
+      "3": "0.75rem",
+      "4": "1rem",
+      "5": "1.25rem",
+      "6": "1.5rem",
+      "8": "2rem",
+      "10": "2.5rem",
+      "12": "3rem",
+      "16": "4rem",
+      "20": "5rem",
+      "24": "6rem",
+      "32": "8rem",
+      "40": "10rem",
+      "48": "12rem",
+      "56": "14rem",
+      "64": "16rem"
+    }
+  },
+  "breakpoints": {
+    "sm": "640px",
+    "md": "768px",
+    "lg": "1024px",
+    "xl": "1280px",
+    "2xl": "1536px"
+  },
+  "components": {
+    "button": {
+      "primary": {
+        "base": "px-6 py-3 rounded-lg font-semibold transition-all duration-200",
+        "colors": "bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800",
+        "shadow": "shadow-md hover:shadow-lg"
+      },
+      "secondary": {
+        "base": "px-6 py-3 rounded-lg font-semibold transition-all duration-200",
+        "colors": "bg-yellow-500 text-gray-900 hover:bg-yellow-600 active:bg-yellow-700",
+        "shadow": "shadow-md hover:shadow-lg"
+      },
+      "outline": {
+        "base": "px-6 py-3 rounded-lg font-semibold transition-all duration-200 border-2",
+        "colors": "border-blue-600 text-blue-600 hover:bg-blue-50 active:bg-blue-100"
+      }
+    },
+    "card": {
+      "base": "bg-white rounded-xl shadow-sm border border-gray-200",
+      "hover": "hover:shadow-md transition-shadow duration-200",
+      "padding": "p-6"
+    },
+    "input": {
+      "base": "w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all",
+      "error": "border-red-500 focus:ring-red-500"
+    }
+  },
+  "shadows": {
+    "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+    "base": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+    "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+    "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+    "xl": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+  },
+  "borderRadius": {
+    "none": "0",
+    "sm": "0.125rem",
+    "base": "0.25rem",
+    "md": "0.375rem",
+    "lg": "0.5rem",
+    "xl": "0.75rem",
+    "2xl": "1rem",
+    "full": "9999px"
+  }
+}
+

@@ -1,0 +1,33 @@
+===========================================
+HOSTINGER ENVIRONMENT VARIABLES
+Copy and paste these into Hostinger control panel
+===========================================
+
+VITE_SUPABASE_URL=https://togpvwfxmydgitkwqdgd.supabase.co
+
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvZ3B2d2Z4bXlkZ2l0a3dxZGdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYyODg2NzMsImV4cCI6MjA4MTg2NDY3M30.5lFeW3Cbis7H4CqaLHrV1-13Z0piJpQ6a3gQmDJ7Y2Y
+
+VITE_ALICLOUD_API_KEY=sk-f457a807f49f4c958636696c751f7533
+
+VITE_API_URL=http://localhost:8000
+(Change this to your backend URL if deploying backend separately)
+
+===========================================
+IMPORTANT NOTES:
+===========================================
+
+1. All variables MUST start with "VITE_" for Vite to expose them
+2. Rebuild your application after setting/changing these variables
+3. These are build-time variables (embedded during npm run build)
+4. Never commit .env files to git (they're already in .gitignore)
+
+===========================================
+NEXT STEPS:
+===========================================
+
+1. Set these variables in Hostinger control panel
+2. Run database migration in Supabase (see DATABASE_SETUP.md)
+3. Build: npm run build
+4. Upload dist/ folder to Hostinger
+5. Test your website!
+
