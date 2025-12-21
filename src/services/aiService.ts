@@ -29,16 +29,30 @@ export const aiService = {
   // Generate text content (blog post, tool description, etc.)
   generateText: async (request: GenerateTextRequest): Promise<GenerationResponse> => {
     try {
-      const response = await axios.post(`${API_URL}/api/ai/generate-text`, request);
-      return {
-        success: true,
-        data: response.data,
-        jobId: response.data.job_id,
-      };
+      const response = await axios.post(`${API_URL}/api/ai/generate-text`, {
+        prompt: request.prompt,
+        job_type: request.jobType,
+        target_type: request.targetType,
+        target_id: request.targetId,
+        max_length: request.maxLength,
+      });
+      
+      if (response.data.success) {
+        return {
+          success: true,
+          data: response.data.data,
+          jobId: response.data.job_id,
+        };
+      } else {
+        return {
+          success: false,
+          error: response.data.error || '生成失敗',
+        };
+      }
     } catch (error: any) {
       return {
         success: false,
-        error: error.response?.data?.detail || error.message || '生成失敗',
+        error: error.response?.data?.error || error.response?.data?.detail || error.message || '生成失敗',
       };
     }
   },
@@ -46,16 +60,29 @@ export const aiService = {
   // Generate image
   generateImage: async (request: GenerateImageRequest): Promise<GenerationResponse> => {
     try {
-      const response = await axios.post(`${API_URL}/api/ai/generate-image`, request);
-      return {
-        success: true,
-        data: response.data,
-        jobId: response.data.job_id,
-      };
+      const response = await axios.post(`${API_URL}/api/ai/generate-image`, {
+        prompt: request.prompt,
+        width: request.width,
+        height: request.height,
+        style: request.style,
+      });
+      
+      if (response.data.success) {
+        return {
+          success: true,
+          data: response.data.data,
+          jobId: response.data.job_id,
+        };
+      } else {
+        return {
+          success: false,
+          error: response.data.error || '生成失敗',
+        };
+      }
     } catch (error: any) {
       return {
         success: false,
-        error: error.response?.data?.detail || error.message || '生成失敗',
+        error: error.response?.data?.error || error.response?.data?.detail || error.message || '生成失敗',
       };
     }
   },

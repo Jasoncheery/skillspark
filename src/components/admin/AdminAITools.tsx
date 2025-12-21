@@ -30,14 +30,19 @@ export const AdminAITools = () => {
   });
 
   const handleSubmit = async (data: any) => {
-    if (editingTool) {
-      await aiToolsService.update(editingTool.id, data);
-    } else {
-      await aiToolsService.create(data);
+    try {
+      if (editingTool) {
+        await aiToolsService.update(editingTool.id, data);
+      } else {
+        await aiToolsService.create(data);
+      }
+      setShowForm(false);
+      setEditingTool(null);
+      queryClient.invalidateQueries({ queryKey: ['admin-ai-tools'] });
+    } catch (error: any) {
+      console.error('Error saving AI tool:', error);
+      alert(error.message || '儲存失敗，請稍後再試');
     }
-    setShowForm(false);
-    setEditingTool(null);
-    queryClient.invalidateQueries({ queryKey: ['admin-ai-tools'] });
   };
 
   return (

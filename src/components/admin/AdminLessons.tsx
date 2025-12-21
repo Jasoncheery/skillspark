@@ -30,26 +30,31 @@ export const AdminLessons = () => {
   });
 
   const handleSubmit = async (data: any) => {
-    // Convert empty date strings to null
-    const processedData = {
-      ...data,
-      registration_deadline: data.registration_deadline || null,
-      start_date: data.start_date || null,
-      end_date: data.end_date || null,
-      instructor_id: data.instructor_id || null,
-      price: data.price || null,
-      duration_minutes: data.duration_minutes || null,
-      max_participants: data.max_participants || null,
-    };
+    try {
+      // Convert empty date strings to null
+      const processedData = {
+        ...data,
+        registration_deadline: data.registration_deadline || null,
+        start_date: data.start_date || null,
+        end_date: data.end_date || null,
+        instructor_id: data.instructor_id || null,
+        price: data.price || null,
+        duration_minutes: data.duration_minutes || null,
+        max_participants: data.max_participants || null,
+      };
 
-    if (editingLesson) {
-      await lessonsService.update(editingLesson.id, processedData);
-    } else {
-      await lessonsService.create(processedData);
+      if (editingLesson) {
+        await lessonsService.update(editingLesson.id, processedData);
+      } else {
+        await lessonsService.create(processedData);
+      }
+      setShowForm(false);
+      setEditingLesson(null);
+      queryClient.invalidateQueries({ queryKey: ['admin-lessons'] });
+    } catch (error: any) {
+      console.error('Error saving lesson:', error);
+      alert(error.message || '儲存失敗，請稍後再試');
     }
-    setShowForm(false);
-    setEditingLesson(null);
-    queryClient.invalidateQueries({ queryKey: ['admin-lessons'] });
   };
 
   return (

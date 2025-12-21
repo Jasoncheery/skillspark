@@ -30,30 +30,35 @@ export const AdminBlog = () => {
   });
 
   const handleSubmit = async (data: any) => {
-    // Convert empty strings to null for optional fields
-    const processedData = {
-      ...data,
-      published_at: data.published_at || null,
-      author_id: data.author_id || null,
-      title_chinese: data.title_chinese || null,
-      excerpt: data.excerpt || null,
-      excerpt_chinese: data.excerpt_chinese || null,
-      content_chinese: data.content_chinese || null,
-      cover_image_url: data.cover_image_url || null,
-      category: data.category || null,
-      seo_title: data.seo_title || null,
-      seo_description: data.seo_description || null,
-      seo_keywords: data.seo_keywords || null,
-    };
+    try {
+      // Convert empty strings to null for optional fields
+      const processedData = {
+        ...data,
+        published_at: data.published_at || null,
+        author_id: data.author_id || null,
+        title_chinese: data.title_chinese || null,
+        excerpt: data.excerpt || null,
+        excerpt_chinese: data.excerpt_chinese || null,
+        content_chinese: data.content_chinese || null,
+        cover_image_url: data.cover_image_url || null,
+        category: data.category || null,
+        seo_title: data.seo_title || null,
+        seo_description: data.seo_description || null,
+        seo_keywords: data.seo_keywords || null,
+      };
 
-    if (editingPost) {
-      await blogService.update(editingPost.id, processedData);
-    } else {
-      await blogService.create(processedData);
+      if (editingPost) {
+        await blogService.update(editingPost.id, processedData);
+      } else {
+        await blogService.create(processedData);
+      }
+      setShowForm(false);
+      setEditingPost(null);
+      queryClient.invalidateQueries({ queryKey: ['admin-blog-posts'] });
+    } catch (error: any) {
+      console.error('Error saving blog post:', error);
+      alert(error.message || '儲存失敗，請稍後再試');
     }
-    setShowForm(false);
-    setEditingPost(null);
-    queryClient.invalidateQueries({ queryKey: ['admin-blog-posts'] });
   };
 
   return (

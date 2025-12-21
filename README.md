@@ -88,10 +88,20 @@ See [HOSTINGER_DEPLOYMENT.md](./HOSTINGER_DEPLOYMENT.md) for Hostinger deploymen
 
 ## 📖 Documentation
 
-- [Project Summary](./docs/PROJECT_SUMMARY.md)
-- [System Architecture](./docs/SYSTEM_ARCHITECTURE.md)
-- [Development Roadmap](./docs/ROADMAP.md)
-- [Action Items](./docs/ACTION_ITEMS.md)
+### Quick Start
+- [Setup Guide](./SETUP.md) - Environment setup and configuration
+- [Implementation Status](./docs/IMPLEMENTATION_STATUS.md) - Current feature status
+
+### Core Documentation
+- [Project Summary](./docs/PROJECT_SUMMARY.md) - Project overview
+- [System Architecture](./docs/SYSTEM_ARCHITECTURE.md) - Technical architecture
+- [Action Items](./docs/ACTION_ITEMS.md) - Feature completion tracker
+- [Development Roadmap](./docs/ROADMAP.md) - Future development plans
+
+### Setup Guides
+- [Authentication Setup](./AUTHENTICATION_IMPLEMENTATION.md) - Auth implementation details
+- [Storage Setup](./docs/STORAGE_SETUP.md) - Image library storage configuration
+- [Database Setup](./DATABASE_SETUP.md) - Database schema and migrations
 
 ## 🎯 Key Features
 

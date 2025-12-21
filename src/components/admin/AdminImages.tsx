@@ -49,9 +49,14 @@ export const AdminImages = () => {
 
   const handleUpdate = async (updates: Partial<Image>) => {
     if (!editingImage) return;
-    await imagesService.update(editingImage.id, updates);
-    setEditingImage(null);
-    queryClient.invalidateQueries({ queryKey: ['admin-images'] });
+    try {
+      await imagesService.update(editingImage.id, updates);
+      setEditingImage(null);
+      queryClient.invalidateQueries({ queryKey: ['admin-images'] });
+    } catch (error: any) {
+      console.error('Error updating image:', error);
+      alert(error.message || '更新失敗，請稍後再試');
+    }
   };
 
   return (

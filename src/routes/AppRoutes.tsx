@@ -12,6 +12,7 @@ import { LessonsPage } from '@/pages/LessonsPage';
 import { LessonDetailPage } from '@/pages/LessonDetailPage';
 import { BlogPage } from '@/pages/BlogPage';
 import { BlogPostPage } from '@/pages/BlogPostPage';
+import { DynamicPage } from '@/pages/DynamicPage';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { AdminRoute } from '@/components/auth/AdminRoute';
 import { TeacherRoute } from '@/components/auth/TeacherRoute';
@@ -64,6 +65,9 @@ const AppRoutes = () => {
           </AdminRoute>
         }
       />
+      
+      {/* Dynamic Pages (catch custom pages, must be last before 404) */}
+      <Route path="/:slug" element={<DynamicPage />} />
       
       {/* Catch-all route */}
       <Route

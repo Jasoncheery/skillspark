@@ -56,10 +56,11 @@
 
 ### 3.1 Admin Dashboard
 - ✅ Dashboard overview
-- ✅ User management
-- ✅ AI tools management
-- ✅ Lesson management
-- ✅ Blog management
+- ✅ User management (CRUD - Update roles, profiles)
+- ✅ AI tools management (Full CRUD)
+- ✅ Lesson management (Full CRUD)
+- ✅ Blog management (Full CRUD)
+- ✅ Image library management (Upload, manage, delete)
 - ✅ Content generation UI
 
 ---

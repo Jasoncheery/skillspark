@@ -47,18 +47,23 @@ export const AdminUsers = () => {
   };
 
   const handleSubmit = async (data: any) => {
-    // Convert empty strings to null for optional fields
-    const processedData = {
-      ...data,
-      full_name: data.full_name || null,
-      avatar_url: data.avatar_url || null,
-    };
+    try {
+      // Convert empty strings to null for optional fields
+      const processedData = {
+        ...data,
+        full_name: data.full_name || null,
+        avatar_url: data.avatar_url || null,
+      };
 
-    if (editingUser) {
-      await updateMutation.mutateAsync({ id: editingUser.id, data: processedData });
+      if (editingUser) {
+        await updateMutation.mutateAsync({ id: editingUser.id, data: processedData });
+      }
+      setShowForm(false);
+      setEditingUser(null);
+    } catch (error: any) {
+      console.error('Error updating user:', error);
+      alert(error.message || '更新失敗，請稍後再試');
     }
-    setShowForm(false);
-    setEditingUser(null);
   };
 
   return (

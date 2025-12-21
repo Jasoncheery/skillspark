@@ -111,9 +111,16 @@ export const contentService = {
       }
 
       if (response.success && response.data) {
+        // Extract content from response
+        const resultData = response.data.content 
+          ? { content: response.data.content }
+          : response.data.image_url
+          ? { image_url: response.data.image_url }
+          : response.data;
+        
         // Update job with result
-        await contentService.updateJobStatus(job.id, 'completed', response.data);
-        return { ...job, status: 'completed', result_data: response.data };
+        await contentService.updateJobStatus(job.id, 'completed', resultData);
+        return { ...job, status: 'completed', result_data: resultData };
       } else {
         // Update job with error
         await contentService.updateJobStatus(job.id, 'failed', null, response.error);
