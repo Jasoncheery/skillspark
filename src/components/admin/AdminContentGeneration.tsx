@@ -30,10 +30,11 @@ export const AdminContentGeneration = () => {
   const { data: jobs = [], isLoading: jobsLoading } = useQuery({
     queryKey: ['content-generation-jobs'],
     queryFn: () => contentService.getAllJobs(),
-    refetchInterval: (data) => {
+    refetchInterval: (query) => {
       // Refetch if there are pending/processing jobs
+      const data = query.state.data;
       const hasActiveJobs = data?.some(
-        (job) => job.status === 'pending' || job.status === 'processing'
+        (job: any) => job.status === 'pending' || job.status === 'processing'
       );
       return hasActiveJobs ? 3000 : false; // Poll every 3 seconds if active jobs
     },
@@ -124,11 +125,21 @@ export const AdminContentGeneration = () => {
       return await blogService.create({
         slug: blogSlug,
         title: blogTitle,
+        title_chinese: null,
         content: editingContent,
+        content_chinese: null,
         excerpt: editingContent.substring(0, 200),
+        excerpt_chinese: null,
+        cover_image_url: null,
         is_published: false, // Save as draft
+        is_featured: false,
+        published_at: null,
         author_id: user?.id || null,
         category: selectedJob?.target_type || null,
+        tags: [],
+        seo_title: null,
+        seo_description: null,
+        seo_keywords: null,
       });
     },
     onSuccess: () => {
@@ -407,7 +418,7 @@ export const AdminContentGeneration = () => {
                               className="w-32 h-32 object-cover rounded"
                             />
                             <button
-                              onClick={() => handleCopyContent(job.result_data.image_url)}
+                              onClick={() => handleCopyContent(job.result_data?.image_url || '')}
                               className="btn-outline text-sm"
                             >
                               <Copy className="w-4 h-4 mr-1" />

@@ -111,7 +111,7 @@ export const imagesService = {
 
     const { data, error } = await supabase
       .from('images')
-      .insert(imageRecord)
+      .insert(imageRecord as any)
       .select()
       .single();
 
@@ -128,7 +128,7 @@ export const imagesService = {
   update: async (id: string, updates: Partial<Image>): Promise<Image> => {
     const { data, error } = await supabase
       .from('images')
-      .update(updates)
+      .update(updates as any)
       .eq('id', id)
       .select()
       .single();
@@ -170,8 +170,8 @@ export const imagesService = {
       .not('category', 'is', null);
 
     if (error) throw error;
-    const categories = new Set(data?.map(item => item.category).filter(Boolean) || []);
-    return Array.from(categories);
+    const categories = new Set((data || []).map((item: any) => (item as any).category).filter(Boolean));
+    return Array.from(categories) as string[];
   },
 };
 

@@ -48,8 +48,8 @@ export const blogService = {
     if (data) {
       await supabase
         .from('blog_posts')
-        .update({ view_count: (data.view_count || 0) + 1 } as any)
-        .eq('id', data.id);
+        .update({ view_count: ((data as any).view_count || 0) + 1 } as any)
+        .eq('id', (data as any).id);
     }
 
     return data;
@@ -64,15 +64,15 @@ export const blogService = {
       .not('category', 'is', null);
 
     if (error) throw error;
-    const categories = new Set(data?.map(item => item.category).filter(Boolean) || []);
-    return Array.from(categories);
+    const categories = new Set((data || []).map((item: any) => (item as any).category).filter(Boolean));
+    return Array.from(categories) as string[];
   },
 
   // Admin: Create post
   create: async (post: Omit<BlogPost, 'id' | 'created_at' | 'updated_at' | 'view_count'>): Promise<BlogPost> => {
     const { data, error } = await supabase
       .from('blog_posts')
-      .insert(post)
+      .insert(post as any)
       .select()
       .single();
 
@@ -84,7 +84,7 @@ export const blogService = {
   update: async (id: string, updates: Partial<BlogPost>): Promise<BlogPost> => {
     const { data, error } = await supabase
       .from('blog_posts')
-      .update(updates)
+      .update(updates as any)
       .eq('id', id)
       .select()
       .single();

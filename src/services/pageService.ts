@@ -58,7 +58,7 @@ export const pageService = {
       .insert({
         ...page,
         created_by: user?.id || null,
-      })
+      } as any)
       .select()
       .single();
 
@@ -70,7 +70,7 @@ export const pageService = {
   update: async (id: string, updates: Partial<Page>): Promise<Page> => {
     const { data, error } = await supabase
       .from('pages')
-      .update(updates)
+      .update(updates as any)
       .eq('id', id)
       .select()
       .single();

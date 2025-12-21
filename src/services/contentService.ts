@@ -21,7 +21,7 @@ export const contentService = {
         prompt,
         status: 'pending',
         created_by: user?.id || null,
-      })
+      } as any)
       .select()
       .single();
 
@@ -74,7 +74,7 @@ export const contentService = {
 
     const { data, error } = await supabase
       .from('content_generation_jobs')
-      .update(updates)
+      .update(updates as any)
       .eq('id', jobId)
       .select()
       .single();

@@ -63,7 +63,7 @@ export const lessonsService = {
         user_id: userId,
         status: 'registered',
         progress_percentage: 0,
-      })
+      } as any)
       .select()
       .single();
 

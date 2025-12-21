@@ -13,7 +13,7 @@ export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
     persistSession: true,
     autoRefreshToken: true,
   },
-});
+}) as any;
 
 // Helper function to get current user
 export const getCurrentUser = async () => {

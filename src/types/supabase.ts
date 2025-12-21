@@ -120,6 +120,94 @@ export type Database = {
         Insert: Omit<Database['public']['Tables']['blog_posts']['Row'], 'id' | 'created_at' | 'updated_at' | 'view_count'>;
         Update: Partial<Database['public']['Tables']['blog_posts']['Insert']>;
       };
+      content_generation_jobs: {
+        Row: {
+          id: string;
+          job_type: 'blog_post' | 'tool_description' | 'image' | 'seo_content';
+          target_type: string | null;
+          target_id: string | null;
+          prompt: string;
+          status: 'pending' | 'processing' | 'completed' | 'failed';
+          result_data: Record<string, any> | null;
+          error_message: string | null;
+          created_by: string | null;
+          created_at: string;
+          completed_at: string | null;
+        };
+        Insert: Omit<Database['public']['Tables']['content_generation_jobs']['Row'], 'id' | 'created_at'>;
+        Update: Partial<Database['public']['Tables']['content_generation_jobs']['Insert']>;
+      };
+      images: {
+        Row: {
+          id: string;
+          filename: string;
+          original_filename: string;
+          storage_path: string;
+          url: string;
+          mime_type: string | null;
+          file_size: number | null;
+          width: number | null;
+          height: number | null;
+          alt_text: string | null;
+          alt_text_chinese: string | null;
+          category: string | null;
+          tags: string[];
+          uploaded_by: string | null;
+          created_at: string;
+        };
+        Insert: Omit<Database['public']['Tables']['images']['Row'], 'id' | 'created_at'>;
+        Update: Partial<Database['public']['Tables']['images']['Insert']>;
+      };
+      lesson_registrations: {
+        Row: {
+          id: string;
+          lesson_id: string;
+          user_id: string;
+          status: 'registered' | 'attended' | 'completed' | 'cancelled';
+          progress_percentage: number;
+          registered_at: string;
+          completed_at: string | null;
+        };
+        Insert: Omit<Database['public']['Tables']['lesson_registrations']['Row'], 'id' | 'registered_at'>;
+        Update: Partial<Database['public']['Tables']['lesson_registrations']['Insert']>;
+      };
+      pages: {
+        Row: {
+          id: string;
+          slug: string;
+          title: string;
+          title_chinese: string | null;
+          content: string | null;
+          content_chinese: string | null;
+          page_type: 'static' | 'landing' | 'custom';
+          template_data: Record<string, any> | null;
+          is_published: boolean;
+          order_index: number;
+          created_at: string;
+          updated_at: string;
+          created_by: string | null;
+        };
+        Insert: Omit<Database['public']['Tables']['pages']['Row'], 'id' | 'created_at' | 'updated_at'>;
+        Update: Partial<Database['public']['Tables']['pages']['Insert']>;
+      };
+      lesson_content: {
+        Row: {
+          id: string;
+          lesson_id: string;
+          content_type: 'video' | 'text' | 'quiz' | 'material' | 'assignment';
+          title: string;
+          content: string | null;
+          video_url: string | null;
+          video_provider: string | null;
+          material_urls: string[];
+          order_index: number;
+          is_required: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: Omit<Database['public']['Tables']['lesson_content']['Row'], 'id' | 'created_at' | 'updated_at'>;
+        Update: Partial<Database['public']['Tables']['lesson_content']['Insert']>;
+      };
     };
   };
 };
