@@ -4,8 +4,14 @@
  * Uses service role key to bypass RLS
  */
 
-const SUPABASE_URL = 'https://togpvwfxmydgitkwqdgd.supabase.co';
-const SERVICE_ROLE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvZ3B2d2Z4bXlkZ2l0a3dxZGdkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NjI4ODY3MywiZXhwIjoyMDgxODY0NjczfQ.YAWkSVgxqu8d53nMH96nN4vn1dxA8OTeORvL8i_O0ps';
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://togpvwfxmydgitkwqdgd.supabase.co';
+const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+if (!SERVICE_ROLE_KEY) {
+  console.error('❌ Error: SUPABASE_SERVICE_ROLE_KEY environment variable is required');
+  console.error('   Set it in your .env file or export it before running this script');
+  process.exit(1);
+}
 
 // Use REST API directly
 async function supabaseInsert(table, data) {

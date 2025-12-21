@@ -7,8 +7,9 @@
 const fs = require('fs');
 const https = require('https');
 
-const SUPABASE_URL = 'https://togpvwfxmydgitkwqdgd.supabase.co';
-const SERVICE_ROLE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvZ3B2d2Z4bXlkZ2l0a3dxZGdkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NjI4ODY3MywiZXhwIjoyMDgxODY0NjczfQ.YAWkSVgxqu8d53nMH96nN4vn1dxA8OTeORvL8i_O0ps';
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://togpvwfxmydgitkwqdgd.supabase.co';
+// Note: This script doesn't actually use the service role key
+// It just displays SQL to run manually in Supabase Dashboard
 
 // Read SQL file
 const sqlContent = fs.readFileSync('supabase/migrations/002_create_user_profile_trigger.sql', 'utf8');

@@ -13,10 +13,9 @@ Variable Name: VITE_ALICLOUD_API_KEY
 Value: sk-f457a807f49f4c958636696c751f7533
 
 Variable Name: VITE_API_URL
-Value: https://your-backend-url.com
-⚠️ REQUIRED: FastAPI backend is needed for AI features!
-Note: Deploy backend to Railway/Render first, then set this to your backend URL
-Current .env has http://localhost:8000 - this won't work in production!
+Value: (DO NOT SET - Leave empty/removed)
+✅ Using Supabase Edge Functions instead of FastAPI backend
+Note: Frontend automatically uses Edge Function when VITE_API_URL is not set
 
 ===========================================
 QUICK COPY (if Hostinger accepts this format):
@@ -25,7 +24,7 @@ QUICK COPY (if Hostinger accepts this format):
 VITE_SUPABASE_URL=https://togpvwfxmydgitkwqdgd.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvZ3B2d2Z4bXlkZ2l0a3dxZGdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYyODg2NzMsImV4cCI6MjA4MTg2NDY3M30.5lFeW3Cbis7H4CqaLHrV1-13Z0piJpQ6a3gQmDJ7Y2Y
 VITE_ALICLOUD_API_KEY=sk-f457a807f49f4c958636696c751f7533
-VITE_API_URL=https://your-backend-url.com
+# VITE_API_URL is NOT needed - using Supabase Edge Functions
 
 ===========================================
 IMPORTANT:

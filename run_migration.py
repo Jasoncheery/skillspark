@@ -8,7 +8,13 @@ import sys
 
 # Supabase credentials
 SUPABASE_URL = "https://togpvwfxmydgitkwqdgd.supabase.co"
-SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvZ3B2d2Z4bXlkZ2l0a3dxZGdkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NjI4ODY3MywiZXhwIjoyMDgxODY0NjczfQ.YAWkSVgxqu8d53nMH96nN4vn1dxA8OTeORvL8i_O0ps"
+import os
+SERVICE_ROLE_KEY = os.getenv('SUPABASE_SERVICE_ROLE_KEY')
+
+if not SERVICE_ROLE_KEY:
+    print("❌ Error: SUPABASE_SERVICE_ROLE_KEY environment variable is required")
+    print("   Set it in your .env file or export it before running this script")
+    exit(1)
 PROJECT_REF = "togpvwfxmydgitkwqdgd"
 
 # Read SQL file

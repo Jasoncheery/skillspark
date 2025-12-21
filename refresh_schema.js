@@ -3,8 +3,14 @@
  * Force Supabase schema cache refresh by making a query with service role
  */
 
-const SUPABASE_URL = 'https://togpvwfxmydgitkwqdgd.supabase.co';
-const SERVICE_ROLE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvZ3B2d2Z4bXlkZ2l0a3dxZGdkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NjI4ODY3MywiZXhwIjoyMDgxODY0NjczfQ.YAWkSVgxqu8d53nMH96nN4vn1dxA8OTeORvL8i_O0ps';
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://togpvwfxmydgitkwqdgd.supabase.co';
+const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+if (!SERVICE_ROLE_KEY) {
+  console.error('❌ Error: SUPABASE_SERVICE_ROLE_KEY environment variable is required');
+  console.error('   Set it in your .env file or export it before running this script');
+  process.exit(1);
+}
 
 async function refreshSchema() {
   console.log('🔄 Attempting to refresh Supabase schema cache...\n');
@@ -30,7 +36,12 @@ async function refreshSchema() {
     }
 
     // Now test with anon key
-    const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvZ3B2d2Z4bXlkZ2l0a3dxZGdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYyODg2NzMsImV4cCI6MjA4MTg2NDY3M30.5lFeW3Cbis7H4CqaLHrV1-13Z0piJpQ6a3gQmDJ7Y2Y';
+    const ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY;
+    
+    if (!ANON_KEY) {
+      console.log('⚠️  VITE_SUPABASE_ANON_KEY not set, skipping anon key test');
+      return;
+    }
     
     console.log('🔍 Testing with anon key (what the frontend uses)...');
     const anonResponse = await fetch(`${SUPABASE_URL}/rest/v1/ai_tools?select=id&limit=1&is_active=eq.true`, {

@@ -69,10 +69,15 @@ VITE_API_URL=https://your-domain.com/api
 For server-side operations, you can use the service role key (keep this secret!):
 
 ```
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvZ3B2d2Z4bXlkZ2l0a3dxZGdkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NjI4ODY3MywiZXhwIjoyMDgxODY0NjczfQ.YAWkSVgxqu8d53nMH96nN4vn1dxA8OTeORvL8i_O0ps
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
 ```
 
-**⚠️ WARNING**: Never expose the service role key in frontend code. Only use it in backend/server-side code.
+**⚠️ CRITICAL SECURITY WARNING**: 
+- **NEVER** commit the service role key to version control
+- **NEVER** expose it in frontend code
+- Only use it in backend/server-side code or environment variables
+- Get your service role key from: Supabase Dashboard → Settings → API → `service_role` key
+- If exposed, immediately rotate it in Supabase Dashboard
 
 ## Verification Steps
 
