@@ -1,7 +1,13 @@
 import axios from 'axios';
+import { supabase } from './supabase';
 import type { JobType } from '../types/database';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// Determine API endpoint: Supabase Edge Function (preferred) or FastAPI
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const FASTAPI_URL = import.meta.env.VITE_API_URL;
+const USE_EDGE_FUNCTION = !FASTAPI_URL && SUPABASE_URL; // Use Edge Function if no FastAPI URL set
+const EDGE_FUNCTION_URL = SUPABASE_URL ? `${SUPABASE_URL}/functions/v1/generate-content` : null;
+const API_BASE_URL = FASTAPI_URL || EDGE_FUNCTION_URL || 'http://localhost:8000';
 
 export interface GenerateTextRequest {
   prompt: string;
@@ -29,13 +35,50 @@ export const aiService = {
   // Generate text content (blog post, tool description, etc.)
   generateText: async (request: GenerateTextRequest): Promise<GenerationResponse> => {
     try {
-      const response = await axios.post(`${API_URL}/api/ai/generate-text`, {
-        prompt: request.prompt,
-        job_type: request.jobType,
-        target_type: request.targetType,
-        target_id: request.targetId,
-        max_length: request.maxLength,
-      });
+      const url = USE_EDGE_FUNCTION 
+        ? `${EDGE_FUNCTION_URL}/generate-text`
+        : `${API_BASE_URL}/api/ai/generate-text`;
+      
+      const payload = USE_EDGE_FUNCTION
+        ? {
+            prompt: request.prompt,
+            job_type: request.jobType,
+            max_length: request.maxLength,
+          }
+        : {
+            prompt: request.prompt,
+            job_type: request.jobType,
+            target_type: request.targetType,
+            target_id: request.targetId,
+            max_length: request.maxLength,
+          };
+
+      // For Edge Functions, use Supabase client for auth
+      if (USE_EDGE_FUNCTION) {
+        const { data: { session } } = await supabase.auth.getSession();
+        const response = await axios.post(url, payload, {
+          headers: {
+            'Authorization': `Bearer ${session?.access_token || import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        
+        if (response.data.success) {
+          return {
+            success: true,
+            data: response.data.data,
+            jobId: response.data.job_id,
+          };
+        } else {
+          return {
+            success: false,
+            error: response.data.error || '生成失敗',
+          };
+        }
+      }
+
+      // For FastAPI
+      const response = await axios.post(url, payload);
       
       if (response.data.success) {
         return {
@@ -60,12 +103,43 @@ export const aiService = {
   // Generate image
   generateImage: async (request: GenerateImageRequest): Promise<GenerationResponse> => {
     try {
-      const response = await axios.post(`${API_URL}/api/ai/generate-image`, {
+      const url = USE_EDGE_FUNCTION
+        ? `${EDGE_FUNCTION_URL}/generate-image`
+        : `${API_BASE_URL}/api/ai/generate-image`;
+      
+      const payload = {
         prompt: request.prompt,
         width: request.width,
         height: request.height,
         style: request.style,
-      });
+      };
+
+      // For Edge Functions, use Supabase client for auth
+      if (USE_EDGE_FUNCTION) {
+        const { data: { session } } = await supabase.auth.getSession();
+        const response = await axios.post(url, payload, {
+          headers: {
+            'Authorization': `Bearer ${session?.access_token || import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        
+        if (response.data.success) {
+          return {
+            success: true,
+            data: response.data.data,
+            jobId: response.data.job_id,
+          };
+        } else {
+          return {
+            success: false,
+            error: response.data.error || '生成失敗',
+          };
+        }
+      }
+
+      // For FastAPI
+      const response = await axios.post(url, payload);
       
       if (response.data.success) {
         return {
@@ -90,7 +164,7 @@ export const aiService = {
   // Get generation job status
   getJobStatus: async (jobId: string): Promise<GenerationResponse> => {
     try {
-      const response = await axios.get(`${API_URL}/api/ai/jobs/${jobId}`);
+      const response = await axios.get(`${API_BASE_URL}/api/ai/jobs/${jobId}`);
       return {
         success: true,
         data: response.data,

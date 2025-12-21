@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft } from 'lucide-react';
 import { Layout } from '../components/layout/Layout';
 import { pageService } from '../services/pageService';
 import ReactMarkdown from 'react-markdown';
 
 export const DynamicPage = () => {
+  const { t } = useTranslation();
   const { slug } = useParams<{ slug: string }>();
 
   const { data: page, isLoading } = useQuery({
@@ -35,13 +37,13 @@ export const DynamicPage = () => {
     return (
       <Layout>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-          <h1 className="heading-2 mb-4">頁面未找到</h1>
+          <h1 className="heading-2 mb-4">{t('common.pageNotFound')}</h1>
           <p className="text-body-lg text-gray-600 mb-6">
-            您要尋找的頁面不存在或已被移除
+            {t('common.pageNotFoundDesc')}
           </p>
           <Link to="/" className="btn-primary inline-flex items-center">
             <ArrowLeft className="mr-2 w-5 h-5" />
-            返回首頁
+            {t('common.backToHome')}
           </Link>
         </div>
       </Layout>
@@ -63,7 +65,7 @@ export const DynamicPage = () => {
               className="inline-flex items-center text-primary-600 hover:text-primary-700 mb-6"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              返回首頁
+              {t('common.backToHome')}
             </Link>
             <h1 className="heading-1">{displayTitle}</h1>
             {page.title_chinese && page.title && (
@@ -78,7 +80,7 @@ export const DynamicPage = () => {
             {displayContent ? (
               <ReactMarkdown>{displayContent}</ReactMarkdown>
             ) : (
-              <p className="text-gray-500">此頁面尚無內容</p>
+              <p className="text-gray-500">{t('common.noContent')}</p>
             )}
           </div>
 
@@ -86,7 +88,7 @@ export const DynamicPage = () => {
           <div className="mt-12 pt-8 border-t border-gray-200">
             <Link to="/" className="btn-outline inline-flex items-center">
               <ArrowLeft className="mr-2 w-5 h-5" />
-              返回首頁
+              {t('common.backToHome')}
             </Link>
           </div>
         </div>

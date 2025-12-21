@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../stores/authStore';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import siteStructure from '../../config/siteStructure.json';
 
 export const Header = () => {
@@ -9,6 +11,7 @@ export const Header = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
   const { user, profile } = useAuthStore();
+  const { t } = useTranslation();
 
   const isActive = (path: string) => {
     if (path === '/') {
@@ -38,6 +41,14 @@ export const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
             {siteStructure.navigation.main.map((item) => {
+              const navKey = item.path === '/' ? 'home' : 
+                            item.path === '/ai-tools' ? 'aiTools' :
+                            item.path === '/lessons' ? 'lessons' :
+                            item.path === '/blog' ? 'blog' :
+                            item.path === '/about' ? 'about' :
+                            item.path === '/contact' ? 'contact' : '';
+              const label = navKey ? t(`nav.${navKey}`) : item.label;
+              
               if (item.children) {
                 return (
                   <div
@@ -53,7 +64,7 @@ export const Header = () => {
                           : 'text-gray-700 hover:text-primary-600'
                       }`}
                     >
-                      <span>{item.label}</span>
+                      <span>{label}</span>
                       <ChevronDown className="w-4 h-4" />
                     </button>
                     {openDropdown === item.label && (
@@ -82,7 +93,7 @@ export const Header = () => {
                       : 'text-gray-700 hover:text-primary-600'
                   }`}
                 >
-                  {item.label}
+                  {label}
                 </Link>
               );
             })}
@@ -90,6 +101,7 @@ export const Header = () => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex md:items-center md:space-x-4">
+            <LanguageSwitcher />
             {user ? (
               <div className="flex items-center space-x-4">
                 <span className="text-sm text-gray-600">
@@ -99,7 +111,7 @@ export const Header = () => {
                   to={`/dashboard/${profile?.role === 'admin' ? 'admin' : profile?.role === 'teacher' ? 'teacher' : 'student'}`}
                   className="text-sm font-medium text-gray-700 hover:text-primary-600"
                 >
-                  儀表板
+                  {t('common.dashboard')}
                 </Link>
                 <button
                   onClick={async () => {
@@ -108,74 +120,87 @@ export const Header = () => {
                   }}
                   className="btn-ghost text-sm"
                 >
-                  登出
+                  {t('common.logout')}
                 </button>
               </div>
             ) : (
               <>
                 <Link to="/login" className="text-sm font-medium text-gray-700 hover:text-primary-600">
-                  登入
+                  {t('common.login')}
                 </Link>
                 <Link to="/register" className="btn-primary text-sm">
-                  註冊
+                  {t('common.register')}
                 </Link>
               </>
             )}
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile menu button and language switcher */}
+          <div className="md:hidden flex items-center space-x-2">
+            <LanguageSwitcher />
+            <button
+              className="p-2 rounded-md text-gray-700 hover:bg-gray-100"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
-            {siteStructure.navigation.main.map((item) => (
-              <div key={item.path}>
-                {item.children ? (
-                  <div>
-                    <button
-                      className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-                      onClick={() => handleDropdownToggle(item.label)}
+            {siteStructure.navigation.main.map((item) => {
+              const navKey = item.path === '/' ? 'home' : 
+                            item.path === '/ai-tools' ? 'aiTools' :
+                            item.path === '/lessons' ? 'lessons' :
+                            item.path === '/blog' ? 'blog' :
+                            item.path === '/about' ? 'about' :
+                            item.path === '/contact' ? 'contact' : '';
+              const label = navKey ? t(`nav.${navKey}`) : item.label;
+              
+              return (
+                <div key={item.path}>
+                  {item.children ? (
+                    <div>
+                      <button
+                        className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                        onClick={() => handleDropdownToggle(item.label)}
+                      >
+                        <span>{label}</span>
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform ${
+                            openDropdown === item.label ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
+                      {openDropdown === item.label && (
+                        <div className="pl-4">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.path}
+                              to={child.path}
+                              className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50"
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
-                      <span>{item.label}</span>
-                      <ChevronDown
-                        className={`w-4 h-4 transition-transform ${
-                          openDropdown === item.label ? 'rotate-180' : ''
-                        }`}
-                      />
-                    </button>
-                    {openDropdown === item.label && (
-                      <div className="pl-4">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.path}
-                            to={child.path}
-                            className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    to={item.path}
-                    className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </div>
-            ))}
+                      {label}
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
             <div className="mt-4 pt-4 border-t border-gray-200 px-4 space-y-2">
               {user ? (
                 <>
@@ -187,7 +212,7 @@ export const Header = () => {
                     className="block btn-primary text-center"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    儀表板
+                    {t('common.dashboard')}
                   </Link>
                   <button
                     onClick={async () => {
@@ -197,7 +222,7 @@ export const Header = () => {
                     }}
                     className="block w-full btn-outline text-center"
                   >
-                    登出
+                    {t('common.logout')}
                   </button>
                 </>
               ) : (
@@ -207,14 +232,14 @@ export const Header = () => {
                     className="block btn-outline text-center"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    登入
+                    {t('common.login')}
                   </Link>
                   <Link
                     to="/register"
                     className="block btn-primary text-center"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    註冊
+                    {t('common.register')}
                   </Link>
                 </>
               )}

@@ -12,6 +12,7 @@ import { LessonsPage } from '@/pages/LessonsPage';
 import { LessonDetailPage } from '@/pages/LessonDetailPage';
 import { BlogPage } from '@/pages/BlogPage';
 import { BlogPostPage } from '@/pages/BlogPostPage';
+import { ContactPage } from '@/pages/ContactPage';
 import { DynamicPage } from '@/pages/DynamicPage';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { AdminRoute } from '@/components/auth/AdminRoute';
@@ -39,6 +40,9 @@ const AppRoutes = () => {
       {/* Blog Routes */}
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/blog/:slug" element={<BlogPostPage />} />
+      
+      {/* Contact Page */}
+      <Route path="/contact" element={<ContactPage />} />
       
       {/* Protected Routes */}
       <Route

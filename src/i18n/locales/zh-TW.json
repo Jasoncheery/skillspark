@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "home": "首頁",
+    "aiTools": "AI 工具",
+    "lessons": "課程",
+    "blog": "AI 攻略",
+    "about": "關於我們",
+    "contact": "聯絡我們"
+  },
+  "common": {
+    "login": "登入",
+    "register": "註冊",
+    "logout": "登出",
+    "dashboard": "儀表板",
+    "search": "搜尋",
+    "allCategories": "所有類別",
+    "backToHome": "返回首頁",
+    "pageNotFound": "頁面未找到",
+    "pageNotFoundDesc": "您要尋找的頁面不存在或已被移除",
+    "noContent": "此頁面尚無內容"
+  },
+  "contact": {
+    "title": "聯絡我們",
+    "subtitle": "我們很樂意聽到您的聲音。如有任何問題或建議，請隨時與我們聯繫。",
+    "email": "電子郵件",
+    "address": "地址",
+    "officeHours": "辦公時間",
+    "officeHoursDesc": "星期一至星期五：上午 9:00 - 下午 6:00",
+    "location": "位置",
+    "mapPlaceholder": "地圖將在此顯示"
+  },
+  "aiTools": {
+    "title": "AI 工具",
+    "subtitle": "探索各種實用 AI 工具，從簡報生成到影片製作，提升您的教學效率",
+    "searchPlaceholder": "搜尋 AI 工具...",
+    "noResults": "找不到相關的 AI 工具",
+    "featured": "精選"
+  },
+  "footer": {
+    "tagline": "技撚星火 - 香港首個 AI 實用教學及應用平台",
+    "mission": "賦能教育工作者，迎接 AI 教學新時代",
+    "about": "關於 SkillSpark",
+    "whoWeAre": "我們是誰",
+    "ourMission": "我們的使命",
+    "contactUs": "聯絡我們",
+    "allTools": "所有工具",
+    "onlineCourses": "線上課程",
+    "offlineWorkshops": "線下工作坊",
+    "aiGuides": "AI 攻略",
+    "latestEvents": "最新活動"
+  },
+  "home": {
+    "hero": {
+      "title": "香港首個 AI 實用教學及應用平台",
+      "subtitle": "賦能教育工作者，迎接 AI 教學新時代"
+    },
+    "features": {
+      "title": "我們的服務",
+      "subtitle": "探索各種實用的 AI 工具和課程，提升您的教學效率"
+    },
+    "about": {
+      "title": "我們是誰：從行業專家到 AI 教育者",
+      "identity": "我們的身份：SkillSpark",
+      "mission": "我們的使命：",
+      "missionText": "賦能教育工作者，迎接 AI 教學新時代",
+      "background": "我們的獨特背景：",
+      "background1": "「我們不僅教授 AI；我們創造 AI。」",
+      "background2": "我們的根基來自一家領先的 IT 解決方案公司，曾為香港的學校和教育機構等重要客戶成功交付 AI 產品。",
+      "background3": "現在，我們經驗豐富的 AI 實踐團隊致力於通過教育分享這些實戰知識，將前沿的 AI 技術帶給教育工作者。",
+      "whatWeDo": "我們做什麼及為何對您重要",
+      "services": "我們的服務：",
+      "servicesText": "我們為專業人士、教育工作者和學生提供實用的動手 AI 和技術課程，幫助他們掌握未來所需的技能。我們擁有成功的培訓記錄，例如曾為本地學校和教育局成功舉辦工作坊，協助其團隊有效應用 AI 技術。",
+      "empower": "我們如何賦能中學教師：",
+      "empowerText": "我們幫助您深入了解 AI 將如何變革教育行業，並提供實用的工具和策略，讓您在充滿變革的教學環境中保持領先。"
+    }
+  }
+}
+
