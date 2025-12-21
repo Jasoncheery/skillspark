@@ -32,7 +32,7 @@ export const usersService = {
   update: async (id: string, updates: Partial<UserProfile>): Promise<UserProfile> => {
     const { data, error } = await supabase
       .from('user_profiles')
-      .update(updates)
+      .update(updates as any)
       .eq('id', id)
       .select()
       .single();

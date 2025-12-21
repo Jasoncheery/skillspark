@@ -116,7 +116,7 @@ export const lessonsService = {
   create: async (lesson: Omit<Lesson, 'id' | 'created_at' | 'updated_at'>): Promise<Lesson> => {
     const { data, error } = await supabase
       .from('lessons')
-      .insert(lesson)
+      .insert(lesson as any)
       .select()
       .single();
 
@@ -128,7 +128,7 @@ export const lessonsService = {
   update: async (id: string, updates: Partial<Lesson>): Promise<Lesson> => {
     const { data, error } = await supabase
       .from('lessons')
-      .update(updates)
+      .update(updates as any)
       .eq('id', id)
       .select()
       .single();

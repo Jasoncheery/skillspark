@@ -59,9 +59,9 @@ export const ImageUploadModal = ({ onUploadComplete, onCancel }: ImageUploadModa
 
     try {
       const image = await imagesService.upload(file, {
-        alt_text: data.alt_text || null,
-        alt_text_chinese: data.alt_text_chinese || null,
-        category: data.category || null,
+        alt_text: data.alt_text || undefined,
+        alt_text_chinese: data.alt_text_chinese || undefined,
+        category: data.category || undefined,
       });
       onUploadComplete(image);
     } catch (err: any) {

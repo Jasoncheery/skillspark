@@ -40,9 +40,9 @@ export const imagesService = {
   upload: async (
     file: File,
     metadata?: {
-      alt_text?: string;
-      alt_text_chinese?: string;
-      category?: string;
+      alt_text?: string | null;
+      alt_text_chinese?: string | null;
+      category?: string | null;
       tags?: string[];
     }
   ): Promise<Image> => {

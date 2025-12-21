@@ -83,7 +83,7 @@ export const BlogPostAdminForm = ({ post, onSubmit, onCancel }: BlogPostAdminFor
     await onSubmit({
       ...data,
       tags,
-      published_at: data.is_published && data.published_at ? new Date(data.published_at).toISOString() : null,
+      published_at: data.is_published && data.published_at ? new Date(data.published_at).toISOString() : '',
     });
   };
 

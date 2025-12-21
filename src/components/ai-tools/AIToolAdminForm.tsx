@@ -62,9 +62,9 @@ export const AIToolAdminForm = ({ tool, onSubmit, onCancel }: AIToolAdminFormPro
   });
 
   const [features, setFeatures] = useState<string[]>(tool?.features || []);
-  const [useCases, setUseCases] = useState<string[]>(tool?.use_cases || []);
-  const [tutorialUrls, setTutorialUrls] = useState<string[]>(tool?.tutorial_urls || []);
-  const [screenshots, setScreenshots] = useState<string[]>(tool?.screenshots || []);
+  const [useCases] = useState<string[]>(tool?.use_cases || []);
+  const [tutorialUrls] = useState<string[]>(tool?.tutorial_urls || []);
+  const [screenshots] = useState<string[]>(tool?.screenshots || []);
   const [showImagePicker, setShowImagePicker] = useState<'cover' | 'icon' | null>(null);
   const coverImageUrl = watch('cover_image_url') || tool?.cover_image_url || '';
   const iconUrl = watch('icon_url') || tool?.icon_url || '';

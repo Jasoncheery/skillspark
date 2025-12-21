@@ -51,15 +51,15 @@ export const aiToolsService = {
       .not('category', 'is', null);
 
     if (error) throw error;
-    const categories = new Set(data?.map(item => item.category).filter(Boolean) || []);
-    return Array.from(categories);
+    const categories = new Set((data || []).map((item: any) => item.category).filter(Boolean));
+    return Array.from(categories) as string[];
   },
 
   // Admin: Create tool
   create: async (tool: Omit<AITool, 'id' | 'created_at' | 'updated_at'>): Promise<AITool> => {
     const { data, error } = await supabase
       .from('ai_tools')
-      .insert(tool)
+      .insert(tool as any)
       .select()
       .single();
 
