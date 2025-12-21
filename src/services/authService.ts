@@ -49,7 +49,7 @@ export const authService = {
               email: authData.user.email || data.email,
               full_name: data.full_name || null,
               role: 'student', // Default role
-            });
+            } as any);
 
           if (profileError) {
             console.error('Error creating user profile:', profileError);

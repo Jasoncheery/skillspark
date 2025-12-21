@@ -71,7 +71,7 @@ export const aiToolsService = {
   update: async (id: string, updates: Partial<AITool>): Promise<AITool> => {
     const { data, error } = await supabase
       .from('ai_tools')
-      .update(updates)
+      .update(updates as any)
       .eq('id', id)
       .select()
       .single();

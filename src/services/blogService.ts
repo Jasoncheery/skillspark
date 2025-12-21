@@ -48,7 +48,7 @@ export const blogService = {
     if (data) {
       await supabase
         .from('blog_posts')
-        .update({ view_count: (data.view_count || 0) + 1 })
+        .update({ view_count: (data.view_count || 0) + 1 } as any)
         .eq('id', data.id);
     }
 
