@@ -4,10 +4,10 @@ overview: "Migrate AI Assistant from nexusspark-ai to skillspark with minimal ne
 todos:
   - id: agent1-backend
     content: Agent 1 - Create FastAPI streaming chat endpoint using existing AliCloud Qwen service. Add /api/ai/chat endpoint with SSE streaming. Test with npm run dev.
-    status: pending
+    status: completed
   - id: agent2-core-component
     content: Agent 2 - Migrate core AIAssistant component, adapt to use existing skillspark components (no shadcn). Use existing lucide-react, react-markdown. Create useAIChat hook for FastAPI.
-    status: pending
+    status: completed
     dependencies:
       - agent1-backend
   - id: agent3-features
@@ -16,8 +16,8 @@ todos:
     dependencies:
       - agent2-core-component
   - id: agent4-theme-routing
-    content: Agent 4 - Apply nexusspark theme to Tailwind config, add framer-motion animations, add /ai-assistant route, integrate with student dashboard. Run npm run dev to verify.
-    status: pending
+    content: Agent 4 - Apply nexusspark theme to Tailwind config, add framer-motion animations, add /dashboard/ai-assistant route, integrate with student dashboard. Run npm run dev to verify.
+    status: completed
     dependencies:
       - agent2-core-component
 ---
