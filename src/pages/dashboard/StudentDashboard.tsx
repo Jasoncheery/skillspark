@@ -1,4 +1,5 @@
-import { BookOpen, Award, Clock, TrendingUp } from 'lucide-react'
+import { BookOpen, Award, Clock, TrendingUp, Bot } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export const StudentDashboard = () => {
   return (
@@ -24,6 +25,17 @@ export const StudentDashboard = () => {
       {/* Main Content */}
       <main className="px-6 py-8">
         <div className="max-w-7xl mx-auto">
+          {/* Quick Actions */}
+          <div className="mb-6">
+            <Link
+              to="/dashboard/ai-assistant"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-400 to-yellow-400 hover:from-orange-500 hover:to-yellow-500 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all"
+            >
+              <Bot className="w-5 h-5" />
+              <span>AI Assistant</span>
+            </Link>
+          </div>
+
           {/* Progress Overview */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div className="card p-6">

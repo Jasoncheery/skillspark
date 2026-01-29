@@ -5,6 +5,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @layer base {
+  :root {
+    /* AI Assistant accent colors (nexusspark style) */
+    --ai-accent: 251 146 60; /* amber-400 */
+    --ai-accent-foreground: 31 41 55; /* gray-800 */
+  }
+
+  .dark {
+    --ai-accent: 251 146 60; /* amber-400 */
+    --ai-accent-foreground: 249 250 251; /* gray-50 */
+  }
+
   html {
     font-family: Inter, system-ui, sans-serif;
   }

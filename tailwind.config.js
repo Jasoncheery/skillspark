@@ -51,6 +51,11 @@ export default {
         error: '#EF4444',
         warning: '#F59E0B',
         info: '#3B82F6',
+        // AI Assistant accent colors (nexusspark style)
+        'ai-accent': {
+          DEFAULT: '#F59E0B', // warm amber
+          foreground: '#1F2937', // dark gray
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

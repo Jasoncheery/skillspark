@@ -17,6 +17,7 @@ import { DynamicPage } from '@/pages/DynamicPage';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { AdminRoute } from '@/components/auth/AdminRoute';
 import { TeacherRoute } from '@/components/auth/TeacherRoute';
+import { AIAssistantPage } from '@/pages/AIAssistantPage';
 
 const AppRoutes = () => {
   return (
@@ -58,6 +59,14 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <StudentDashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/dashboard/ai-assistant"
+        element={
+          <ProtectedRoute>
+            <AIAssistantPage />
           </ProtectedRoute>
         }
       />
