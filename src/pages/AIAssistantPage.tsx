@@ -11,6 +11,7 @@ import { Layout } from "../components/layout/Layout";
 import { useAIChat, Message } from "../hooks/useAIChat";
 import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
+import { motion } from "framer-motion";
 
 const suggestedQuestions = {
   en: [
