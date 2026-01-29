@@ -12,7 +12,7 @@ todos:
       - agent1-backend
   - id: agent3-features
     content: "Agent 3 - Add LibreChat features: artifacts (using react-markdown), conversation history (Supabase), file uploads (Supabase storage). Use existing packages only."
-    status: pending
+    status: completed
     dependencies:
       - agent2-core-component
   - id: agent4-theme-routing
@@ -182,10 +182,10 @@ Migrate the AI Assistant functionality from nexusspark-ai to skillspark with **m
 
 ### Agent 3: Features
 
-- [ ] Create ArtifactRenderer using react-markdown
-- [ ] Implement conversation history service (Supabase)
-- [ ] Add file upload component (Supabase Storage)
-- [ ] Test all features
+- [x] Create ArtifactRenderer using react-markdown
+- [x] Implement conversation history service (Supabase)
+- [x] Add file upload component (Supabase Storage)
+- [x] Test all features
 
 ### Agent 4: Theme & Routing
 
