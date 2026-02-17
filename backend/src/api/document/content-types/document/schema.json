@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "documents",
+  "info": {
+    "singularName": "document",
+    "pluralName": "documents",
+    "displayName": "Document",
+    "description": "User-uploaded documents with embeddings"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["files"]
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "fileType": {
+      "type": "enumeration",
+      "enum": ["pdf", "docx", "txt", "other"]
+    },
+    "extractedText": {
+      "type": "text"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["uploading", "processing", "completed", "failed"],
+      "default": "uploading"
+    },
+    "embeddings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::document-embedding.document-embedding",
+      "mappedBy": "document"
+    },
+    "metadata": {
+      "type": "json"
+    }
+  }
+}

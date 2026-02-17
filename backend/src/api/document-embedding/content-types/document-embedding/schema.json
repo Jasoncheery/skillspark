@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "document_embeddings",
+  "info": {
+    "singularName": "document-embedding",
+    "pluralName": "document-embeddings",
+    "displayName": "Document Embedding",
+    "description": "Vector embeddings for document chunks"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "document": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::document.document",
+      "inversedBy": "embeddings"
+    },
+    "chunkText": {
+      "type": "text",
+      "required": true
+    },
+    "chunkIndex": {
+      "type": "integer",
+      "required": true
+    },
+    "embedding": {
+      "type": "json",
+      "description": "Vector embedding array"
+    },
+    "metadata": {
+      "type": "json"
+    }
+  }
+}

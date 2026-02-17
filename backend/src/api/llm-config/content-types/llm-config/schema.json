@@ -1,0 +1,46 @@
+{
+  "kind": "singleType",
+  "collectionName": "llm_config",
+  "info": {
+    "singularName": "llm-config",
+    "pluralName": "llm-configs",
+    "displayName": "LLM Configuration",
+    "description": "Admin-managed LLM settings"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "qwenEnabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "openaiEnabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "claudeEnabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "geminiEnabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "defaultModel": {
+      "type": "enumeration",
+      "enum": ["qwen", "openai", "claude", "gemini"],
+      "default": "qwen"
+    },
+    "embeddingModel": {
+      "type": "enumeration",
+      "enum": ["openai", "qwen", "local"],
+      "default": "openai"
+    },
+    "settings": {
+      "type": "json",
+      "description": "Additional LLM settings"
+    }
+  }
+}

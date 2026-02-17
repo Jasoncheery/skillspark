@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "submissions",
+  "info": {
+    "singularName": "submission",
+    "pluralName": "submissions",
+    "displayName": "Submission",
+    "description": "Student homework submissions"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "student": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "assignment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::assignment.assignment",
+      "inversedBy": "submissions"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "files": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images", "files", "videos"]
+    },
+    "grade": {
+      "type": "decimal"
+    },
+    "feedback": {
+      "type": "text"
+    },
+    "aiCheck": {
+      "type": "json",
+      "description": "AI self-checking results"
+    },
+    "submittedAt": {
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "prompt_templates",
+  "info": {
+    "singularName": "prompt-template",
+    "pluralName": "prompt-templates",
+    "displayName": "Prompt Template",
+    "description": "Admin-managed LLM prompt templates"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "template": {
+      "type": "text",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["teacher", "student", "admin", "general"]
+    },
+    "variables": {
+      "type": "json",
+      "description": "Template variables schema"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  strapi:
+    build: .
+    container_name: skillspark-strapi
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: 72.62.67.205
+      DATABASE_PORT: 5432
+      DATABASE_NAME: new_project_db
+      DATABASE_USERNAME: new_project_user
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      NODE_ENV: production
+    ports:
+      - '1337:1337'
+    volumes:
+      - ./public/uploads:/app/public/uploads
+    networks:
+      - skillspark-network
+
+networks:
+  skillspark-network:
+    driver: bridge

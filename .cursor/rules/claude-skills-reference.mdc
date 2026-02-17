@@ -1,0 +1,59 @@
+---
+alwaysApply: true
+description: Reference guide for Claude Skills from awesome-claude-skills repository
+---
+
+# Claude Skills Reference for SkillSpark
+
+This project utilizes skills from the [Awesome Claude Skills](https://github.com/ComposioHQ/awesome-claude-skills) repository to enhance AI capabilities.
+
+## Development & Code Tools
+
+- **test-driven-development**: Use when implementing features or bugfixes
+- **software-architecture**: Design patterns (Clean Architecture, SOLID principles)
+- **artifacts-builder**: Reference for design patterns, shadcn/ui component usage, and TailwindCSS best practices
+- **prompt-engineering**: Design and optimize prompts for multi-LLM integration
+- **mcp-builder**: Build MCP servers for LLM orchestration
+
+## Document Processing (Teacher Features)
+
+- **docx**: Generate Word documents (worksheets, lesson plans)
+- **pdf**: Generate PDF exam papers, extract text from uploaded files
+- **pptx**: Generate presentations for teachers
+- **xlsx**: Generate spreadsheets for grading
+
+## Data & Analysis
+
+- **postgres**: Execute safe SQL queries against PostgreSQL database
+- **deep-research**: Research for educational content generation
+
+## Communication & Writing
+
+- **content-research-writer**: Generate educational content, assist with content creation
+- **meeting-insights-analyzer**: Analyze student-teacher interactions
+- **brainstorming**: Transform ideas into feature designs
+
+## Creative & Media (Design System)
+
+- **canvas-design**: Create visual assets and cute UI elements
+- **theme-factory**: Apply cute themes to design system
+- **image-enhancer**: Enhance uploaded images, process homework images
+
+## Productivity & Organization
+
+- **file-organizer**: Organize uploaded homework files, manage submissions
+- **tailored-resume-generator**: Generate personalized learning paths
+
+## Skills Usage by Feature
+
+- **Teacher Artifact Generation**: `docx`, `pptx`, `xlsx`, `pdf`
+- **Teacher Exam Paper Generation**: `docx`, `pdf`, `prompt-engineering`
+- **AI Chat Interfaces**: `content-research-writer`, `brainstorming`
+- **Document Processing**: `pdf`, `docx` (for text extraction)
+- **UI Development**: `artifacts-builder` (design patterns & shadcn/ui), `canvas-design`, `theme-factory`
+- **Database Operations**: `postgres`
+- **Code Quality**: `test-driven-development`, `software-architecture`
+
+## Reference
+
+Full documentation: https://github.com/ComposioHQ/awesome-claude-skills
