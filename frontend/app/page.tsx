@@ -1,75 +1,69 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      
-      <main className="flex-1">
-        {/* Hero Section */}
-        <section className="container py-20 md:py-32">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-6xl">
-              SkillSpark
-            </h1>
-            <p className="mb-8 text-xl text-muted-foreground">
-              Empowering educators with AI tools and educational resources.
-              Discover practical AI solutions, join workshops, and access
-              comprehensive learning materials.
-            </p>
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-              <Link
-                href="/ai-tools"
-                className="rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-              >
-                Explore AI Tools
-              </Link>
-              <Link
-                href="/lessons"
-                className="rounded-md border border-input bg-background px-6 py-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-              >
-                View Lessons
-              </Link>
-            </div>
-          </div>
-        </section>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-cute">
+      {/* Hero Section */}
+      <section className="text-center py-20 px-4">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-primary mb-4 animate-fade-in-up">
+          ✨ SkillSpark ✨
+        </h1>
+        <p className="text-2xl md:text-3xl font-bold mb-2 animate-fade-in-up delay-100">
+          Ignite Your Learning Journey
+        </p>
+        <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in-up delay-200">
+          Empowering educators and students with AI-powered tools 🚀
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up delay-300">
+          <Link href="/ai-tools" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 px-8 rounded-cute shadow-cute hover-lift transition-all duration-300">
+            🤖 Explore AI Tools
+          </Link>
+          <Link href="/lessons" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold py-4 px-8 rounded-cute shadow-cute hover-lift transition-all duration-300">
+            📚 Join a Lesson
+          </Link>
+        </div>
+      </section>
 
-        {/* Features Section */}
-        <section className="border-t bg-muted/50 py-20">
-          <div className="container">
-            <h2 className="mb-12 text-center text-3xl font-bold">
-              What We Offer
-            </h2>
-            <div className="grid gap-8 md:grid-cols-3">
-              <div className="rounded-lg border bg-background p-6">
-                <h3 className="mb-3 text-xl font-semibold">AI Tools Directory</h3>
-                <p className="text-muted-foreground">
-                  Comprehensive directory of practical AI tools with detailed
-                  information, tutorials, and use cases.
-                </p>
-              </div>
-              <div className="rounded-lg border bg-background p-6">
-                <h3 className="mb-3 text-xl font-semibold">Educational Resources</h3>
-                <p className="text-muted-foreground">
-                  Online courses and offline workshops to help you master AI
-                  tools and enhance your teaching.
-                </p>
-              </div>
-              <div className="rounded-lg border bg-background p-6">
-                <h3 className="mb-3 text-xl font-semibold">AI-Powered Content</h3>
-                <p className="text-muted-foreground">
-                  Generate educational content, worksheets, and exam papers using
-                  advanced AI technology.
-                </p>
-              </div>
-            </div>
+      {/* Features Section */}
+      <section className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 py-16 px-4">
+        <div className="bg-card rounded-cute-lg shadow-cute p-8 text-center hover-lift animate-scale-in">
+          <div className="animate-float">
+            <Image src="/globe.svg" alt="AI Tools" width={80} height={80} className="mx-auto mb-4" />
           </div>
-        </section>
-      </main>
-      
-      <Footer />
+          <h3 className="text-2xl font-bold text-primary mb-3">🌟 AI Tools Showcase</h3>
+          <p className="text-muted-foreground text-lg">Discover and compare the best AI tools for education.</p>
+        </div>
+        <div className="bg-card rounded-cute-lg shadow-cute p-8 text-center hover-lift animate-scale-in delay-100">
+          <div className="animate-float" style={{ animationDelay: '0.5s' }}>
+            <Image src="/file.svg" alt="Lessons" width={80} height={80} className="mx-auto mb-4" />
+          </div>
+          <h3 className="text-2xl font-bold text-primary mb-3">📖 Interactive Lessons</h3>
+          <p className="text-muted-foreground text-lg">Engage with online courses and offline workshops.</p>
+        </div>
+        <div className="bg-card rounded-cute-lg shadow-cute p-8 text-center hover-lift animate-scale-in delay-200">
+          <div className="animate-float" style={{ animationDelay: '1s' }}>
+            <Image src="/window.svg" alt="AI Content" width={80} height={80} className="mx-auto mb-4" />
+          </div>
+          <h3 className="text-2xl font-bold text-primary mb-3">✨ AI-Powered Content</h3>
+          <p className="text-muted-foreground text-lg">Generate SEO-optimized blogs and educational materials.</p>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="w-full max-w-4xl mx-auto text-center py-16 px-4">
+        <div className="bg-gradient-peachy rounded-cute-lg shadow-cute-lg p-12 animate-scale-in delay-300">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
+            Ready to Transform Your Learning? 🎓
+          </h2>
+          <p className="text-lg text-muted-foreground mb-6">
+            Join thousands of educators and students already using SkillSpark
+          </p>
+          <Link href="/auth/register" className="inline-block bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-4 px-10 rounded-cute shadow-cute hover-lift transition-all duration-300 text-lg">
+            Get Started Free 🚀
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,73 +1,78 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-export function Footer() {
+export default function Footer() {
   return (
-    <footer className="border-t bg-background">
-      <div className="container py-10">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+    <footer className="bg-gradient-cute-reverse border-t border-border mt-8">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          {/* Brand */}
           <div>
-            <h3 className="mb-4 text-lg font-semibold">SkillSpark</h3>
-            <p className="text-sm text-muted-foreground">
-              Empowering educators with AI tools and educational resources.
+            <div className="flex items-center space-x-2 mb-4">
+              <span className="text-2xl">✨</span>
+              <span className="text-xl font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                SkillSpark
+              </span>
+            </div>
+            <p className="text-muted-foreground">
+              Empowering educators and students with AI-powered tools and engaging resources.
             </p>
           </div>
-          
+
+          {/* Quick Links */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold">Resources</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <h3 className="font-bold text-foreground mb-4">Quick Links</h3>
+            <ul className="space-y-2">
               <li>
-                <Link href="/ai-tools" className="hover:text-foreground">
-                  AI Tools
+                <Link href="/ai-tools" className="text-muted-foreground hover:text-primary transition-colors">
+                  🤖 AI Tools
                 </Link>
               </li>
               <li>
-                <Link href="/lessons" className="hover:text-foreground">
-                  Lessons
+                <Link href="/lessons" className="text-muted-foreground hover:text-primary transition-colors">
+                  📚 Lessons
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-foreground">
-                  Blog
+                <Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">
+                  📝 Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/dashboard" className="text-muted-foreground hover:text-primary transition-colors">
+                  📊 Dashboard
                 </Link>
               </li>
             </ul>
           </div>
-          
+
+          {/* Legal */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold">Support</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <h3 className="font-bold text-foreground mb-4">Legal</h3>
+            <ul className="space-y-2">
               <li>
-                <Link href="/contact" className="hover:text-foreground">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-foreground">
-                  About
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="mb-4 text-sm font-semibold">Legal</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <Link href="/privacy" className="hover:text-foreground">
+                <Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-foreground">
+                <Link href="/terms" className="text-muted-foreground hover:text-primary transition-colors">
                   Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+                  Contact Us
                 </Link>
               </li>
             </ul>
           </div>
         </div>
-        
-        <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} SkillSpark. All rights reserved.</p>
+
+        {/* Copyright */}
+        <div className="border-t border-border pt-8 text-center">
+          <p className="text-muted-foreground">
+            © {new Date().getFullYear()} SkillSpark. All rights reserved. Made with 💙 and 💛
+          </p>
         </div>
       </div>
     </footer>

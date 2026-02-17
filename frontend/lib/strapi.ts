@@ -3,8 +3,38 @@
  * Handles all API requests to the Strapi backend
  */
 
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-const API_URL = `${STRAPI_URL}/api`;
+import qs from 'qs';
+
+const STRAPI_API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337/api';
+
+async function fetchApi(path: string, urlParamsObject = {}, options = {}) {
+  const mergedOptions = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    ...options,
+  };
+
+  const queryString = qs.stringify(urlParamsObject);
+  const requestUrl = `${STRAPI_API_URL}${path}${queryString ? `?${queryString}` : ''}`;
+
+  const response = await fetch(requestUrl, mergedOptions);
+
+  if (!response.ok) {
+    console.error(response.statusText);
+    throw new Error(`An error occured please try again.`);
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+export const strapi = {
+  get: async (path: string, params?: object, options?: object) => fetchApi(path, params, options),
+  post: async (path: string, data: object, options?: object) => fetchApi(path, {}, { method: 'POST', body: JSON.stringify(data), ...options }),
+  put: async (path: string, data: object, options?: object) => fetchApi(path, {}, { method: 'PUT', body: JSON.stringify(data), ...options }),
+  delete: async (path: string, options?: object) => fetchApi(path, {}, { method: 'DELETE', ...options }),
+};
 
 export interface StrapiResponse<T> {
   data: T;
@@ -23,134 +53,5 @@ export interface StrapiEntity {
   attributes: Record<string, any>;
 }
 
-/**
- * Fetch data from Strapi API
- */
-export async function fetchStrapi<T>(
-  endpoint: string,
-  options?: RequestInit
-): Promise<StrapiResponse<T>> {
-  const url = `${API_URL}${endpoint}`;
-  
-  const response = await fetch(url, {
-    ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      ...options?.headers,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`Strapi API error: ${response.status} ${response.statusText}`);
-  }
-
-  return response.json();
-}
-
-/**
- * Get single entity by ID
- */
-export async function getStrapiEntity<T>(
-  contentType: string,
-  id: number | string,
-  populate?: string
-): Promise<T> {
-  const populateParam = populate ? `?populate=${populate}` : '';
-  const response = await fetchStrapi<T>(`/${contentType}/${id}${populateParam}`);
-  return response.data;
-}
-
-/**
- * Get multiple entities with optional filters
- */
-export async function getStrapiEntities<T>(
-  contentType: string,
-  options?: {
-    populate?: string;
-    filters?: Record<string, any>;
-    sort?: string[];
-    pagination?: {
-      page?: number;
-      pageSize?: number;
-    };
-  }
-): Promise<{ data: T[]; meta?: StrapiResponse<T>['meta'] }> {
-  const params = new URLSearchParams();
-  
-  if (options?.populate) {
-    params.append('populate', options.populate);
-  }
-  
-  if (options?.filters) {
-    Object.entries(options.filters).forEach(([key, value]) => {
-      params.append(`filters[${key}]`, String(value));
-    });
-  }
-  
-  if (options?.sort) {
-    options.sort.forEach((sort) => {
-      params.append('sort', sort);
-    });
-  }
-  
-  if (options?.pagination) {
-    if (options.pagination.page) {
-      params.append('pagination[page]', String(options.pagination.page));
-    }
-    if (options.pagination.pageSize) {
-      params.append('pagination[pageSize]', String(options.pagination.pageSize));
-    }
-  }
-
-  const queryString = params.toString();
-  const endpoint = `/${contentType}${queryString ? `?${queryString}` : ''}`;
-  const response = await fetchStrapi<T[]>(endpoint);
-  
-  return {
-    data: Array.isArray(response.data) ? response.data : [],
-    meta: response.meta,
-  };
-}
-
-/**
- * Create new entity
- */
-export async function createStrapiEntity<T>(
-  contentType: string,
-  data: Record<string, any>
-): Promise<T> {
-  const response = await fetchStrapi<T>(`/${contentType}`, {
-    method: 'POST',
-    body: JSON.stringify({ data }),
-  });
-  return response.data;
-}
-
-/**
- * Update entity
- */
-export async function updateStrapiEntity<T>(
-  contentType: string,
-  id: number | string,
-  data: Record<string, any>
-): Promise<T> {
-  const response = await fetchStrapi<T>(`/${contentType}/${id}`, {
-    method: 'PUT',
-    body: JSON.stringify({ data }),
-  });
-  return response.data;
-}
-
-/**
- * Delete entity
- */
-export async function deleteStrapiEntity(
-  contentType: string,
-  id: number | string
-): Promise<void> {
-  await fetchStrapi(`/${contentType}/${id}`, {
-    method: 'DELETE',
-  });
-}
-
-export { STRAPI_URL, API_URL };
+// Legacy exports for backward compatibility
+export { STRAPI_API_URL };
