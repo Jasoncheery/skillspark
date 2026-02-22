@@ -35,13 +35,13 @@ export default function LessonsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-neutral-900 mb-4">
+          <h1 className="text-4xl font-extrabold text-foreground mb-4">
             Explore Our Classes
           </h1>
-          <p className="text-xl text-neutral-600">
+          <p className="text-xl text-muted-foreground">
             Join engaging online courses and offline workshops
           </p>
         </div>
@@ -54,7 +54,7 @@ export default function LessonsPage() {
 
         {classes.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-xl text-neutral-600">No classes available at the moment.</p>
+            <p className="text-xl text-muted-foreground">No classes available at the moment.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -62,16 +62,16 @@ export default function LessonsPage() {
               <Link
                 key={classItem.id}
                 href={`/lessons/${classItem.id}`}
-                className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
+                className="bg-card rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group border-2 border-border"
               >
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary-600 transition-colors">
+                  <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {classItem.attributes.name}
                   </h3>
-                  <p className="text-neutral-600 mb-4 line-clamp-3">
+                  <p className="text-muted-foreground mb-4 line-clamp-3">
                     {classItem.attributes.description || 'No description available'}
                   </p>
-                  <div className="flex items-center justify-between text-sm text-neutral-500">
+                  <div className="flex items-center justify-between text-sm text-muted-foreground">
                     <span>
                       {classItem.attributes.students?.length || 0} students
                     </span>

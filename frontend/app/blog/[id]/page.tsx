@@ -89,10 +89,10 @@ export default function BlogPostPage() {
 
   if (!post) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="flex items-center justify-center py-20">
         <div className="text-center">
-          <p className="text-xl text-error-600 mb-4">Blog post not found</p>
-          <Link href="/blog" className="text-primary-600 hover:text-primary-700">
+          <p className="text-xl text-destructive mb-4">Blog post not found</p>
+          <Link href="/blog" className="text-primary hover:text-primary/80">
             ← Back to Blog
           </Link>
         </div>
@@ -101,31 +101,31 @@ export default function BlogPostPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <Link href="/blog" className="text-primary-600 hover:text-primary-700 mb-6 inline-block">
+        <Link href="/blog" className="text-primary hover:text-primary/80 mb-6 inline-block">
           ← Back to Blog
         </Link>
 
-        <article className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <article className="bg-card rounded-xl shadow-lg overflow-hidden border-2 border-border">
           {/* Header Image */}
-          <div className="bg-gradient-to-br from-primary-200 to-secondary-200 flex items-center justify-center p-16">
+          <div className="bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center p-16">
             <Image src={post.image} alt={post.title} width={200} height={200} />
           </div>
 
           {/* Content */}
           <div className="p-8 md:p-12">
             <div className="mb-6">
-              <span className="px-3 py-1 text-sm font-medium bg-primary-100 text-primary-700 rounded-full">
+              <span className="px-3 py-1 text-sm font-medium bg-primary/20 text-primary rounded-full">
                 {post.category}
               </span>
             </div>
 
-            <h1 className="text-4xl font-extrabold text-neutral-900 mb-4">
+            <h1 className="text-4xl font-extrabold text-foreground mb-4">
               {post.title}
             </h1>
 
-            <div className="flex items-center text-neutral-600 mb-8 space-x-4">
+            <div className="flex items-center text-muted-foreground mb-8 space-x-4">
               <span className="font-medium">{post.author}</span>
               <span>•</span>
               <span>{new Date(post.date).toLocaleDateString()}</span>
@@ -135,7 +135,7 @@ export default function BlogPostPage() {
 
             <div className="prose prose-lg max-w-none">
               <div
-                className="text-neutral-700 leading-relaxed"
+                className="text-foreground leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: post.content }}
                 style={{
                   fontSize: '1.125rem',
@@ -145,25 +145,25 @@ export default function BlogPostPage() {
             </div>
 
             {/* Author Bio */}
-            <div className="mt-12 pt-8 border-t border-neutral-200">
-              <h3 className="text-xl font-bold text-neutral-900 mb-2">About the Author</h3>
-              <p className="text-neutral-600">
+            <div className="mt-12 pt-8 border-t border-border">
+              <h3 className="text-xl font-bold text-foreground mb-2">About the Author</h3>
+              <p className="text-muted-foreground">
                 <strong>{post.author}</strong> is an education technology specialist with over 10 years of experience
                 helping teachers integrate AI tools into their classrooms.
               </p>
             </div>
 
             {/* Share Buttons */}
-            <div className="mt-8 pt-8 border-t border-neutral-200">
-              <h3 className="text-lg font-bold text-neutral-900 mb-4">Share this article</h3>
+            <div className="mt-8 pt-8 border-t border-border">
+              <h3 className="text-lg font-bold text-foreground mb-4">Share this article</h3>
               <div className="flex space-x-4">
-                <button className="px-4 py-2 bg-primary-100 text-primary-700 rounded-lg hover:bg-primary-200 transition-colors">
+                <button className="px-4 py-2 bg-primary/20 text-primary rounded-lg hover:bg-primary/30 transition-colors">
                   Twitter
                 </button>
-                <button className="px-4 py-2 bg-primary-100 text-primary-700 rounded-lg hover:bg-primary-200 transition-colors">
+                <button className="px-4 py-2 bg-primary/20 text-primary rounded-lg hover:bg-primary/30 transition-colors">
                   LinkedIn
                 </button>
-                <button className="px-4 py-2 bg-primary-100 text-primary-700 rounded-lg hover:bg-primary-200 transition-colors">
+                <button className="px-4 py-2 bg-primary/20 text-primary rounded-lg hover:bg-primary/30 transition-colors">
                   Facebook
                 </button>
               </div>
@@ -173,25 +173,25 @@ export default function BlogPostPage() {
 
         {/* Related Posts */}
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-neutral-900 mb-6">Related Articles</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-6">Related Articles</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Link
               href="/blog/2"
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6"
+              className="bg-card rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border-2 border-border"
             >
-              <h3 className="text-lg font-bold text-neutral-900 mb-2 hover:text-primary-600">
+              <h3 className="text-lg font-bold text-foreground mb-2 hover:text-primary">
                 Getting Started with ChatGPT in Your Classroom
               </h3>
-              <p className="text-neutral-600 text-sm">7 min read</p>
+              <p className="text-muted-foreground text-sm">7 min read</p>
             </Link>
             <Link
               href="/blog/3"
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6"
+              className="bg-card rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border-2 border-border"
             >
-              <h3 className="text-lg font-bold text-neutral-900 mb-2 hover:text-primary-600">
+              <h3 className="text-lg font-bold text-foreground mb-2 hover:text-primary">
                 The Future of Personalized Learning
               </h3>
-              <p className="text-neutral-600 text-sm">6 min read</p>
+              <p className="text-muted-foreground text-sm">6 min read</p>
             </Link>
           </div>
         </div>

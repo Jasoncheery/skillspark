@@ -71,13 +71,13 @@ const categories = ['All', 'AI in Education', 'Teaching Tips', 'EdTech Trends', 
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-neutral-900 mb-4">
+          <h1 className="text-4xl font-extrabold text-foreground mb-4">
             SkillSpark Blog
           </h1>
-          <p className="text-xl text-neutral-600">
+          <p className="text-xl text-muted-foreground">
             Insights, tips, and stories about AI in education
           </p>
         </div>
@@ -98,23 +98,23 @@ export default function BlogPage() {
         {blogPosts.length > 0 && (
           <Link
             href={`/blog/${blogPosts[0].id}`}
-            className="block bg-white rounded-xl shadow-lg overflow-hidden mb-12 group hover:shadow-2xl transition-shadow duration-300"
+            className="block bg-card rounded-xl shadow-lg overflow-hidden mb-12 group hover:shadow-2xl transition-shadow duration-300 border-2 border-border"
           >
             <div className="md:flex">
               <div className="md:w-1/2 bg-gradient-to-br from-primary-200 to-secondary-200 flex items-center justify-center p-12">
                 <Image src={blogPosts[0].image} alt={blogPosts[0].title} width={200} height={200} />
               </div>
               <div className="md:w-1/2 p-8">
-                <span className="px-3 py-1 text-xs font-medium bg-accent-100 text-accent-700 rounded-full">
+                <span className="px-3 py-1 text-xs font-medium bg-accent/20 text-accent-foreground rounded-full">
                   Featured
                 </span>
-                <h2 className="text-3xl font-bold text-neutral-900 mt-4 mb-4 group-hover:text-primary-600 transition-colors">
+                <h2 className="text-3xl font-bold text-foreground mt-4 mb-4 group-hover:text-primary transition-colors">
                   {blogPosts[0].title}
                 </h2>
-                <p className="text-neutral-600 mb-4">
+                <p className="text-muted-foreground mb-4">
                   {blogPosts[0].excerpt}
                 </p>
-                <div className="flex items-center text-sm text-neutral-500 space-x-4">
+                <div className="flex items-center text-sm text-muted-foreground space-x-4">
                   <span>{blogPosts[0].author}</span>
                   <span>•</span>
                   <span>{new Date(blogPosts[0].date).toLocaleDateString()}</span>
@@ -128,33 +128,33 @@ export default function BlogPage() {
 
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {blogPosts.slice(1).map((post) => (
-            <Link
-              key={post.id}
-              href={`/blog/${post.id}`}
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
-            >
+            {blogPosts.slice(1).map((post) => (
+              <Link
+                key={post.id}
+                href={`/blog/${post.id}`}
+                className="bg-card rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group border-2 border-border"
+              >
               <div className="bg-gradient-to-br from-primary-100 to-secondary-100 flex items-center justify-center p-8">
                 <Image src={post.image} alt={post.title} width={100} height={100} />
               </div>
-              <div className="p-6">
-                <span className="px-3 py-1 text-xs font-medium bg-primary-100 text-primary-700 rounded-full">
-                  {post.category}
-                </span>
-                <h3 className="text-xl font-bold text-neutral-900 mt-3 mb-2 group-hover:text-primary-600 transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-neutral-600 mb-4 line-clamp-2">
-                  {post.excerpt}
-                </p>
-                <div className="flex items-center text-sm text-neutral-500 space-x-2">
+                <div className="p-6">
+                  <span className="px-3 py-1 text-xs font-medium bg-primary/20 text-primary rounded-full">
+                    {post.category}
+                  </span>
+                  <h3 className="text-xl font-bold text-foreground mt-3 mb-2 group-hover:text-primary transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4 line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex items-center text-sm text-muted-foreground space-x-2">
                   <span>{post.author}</span>
                   <span>•</span>
                   <span>{post.readTime}</span>
-                </div>
-                <div className="mt-4 text-sm text-neutral-500">
-                  {new Date(post.date).toLocaleDateString()}
-                </div>
+                  </div>
+                  <div className="mt-4 text-sm text-muted-foreground">
+                    {new Date(post.date).toLocaleDateString()}
+                  </div>
               </div>
             </Link>
           ))}

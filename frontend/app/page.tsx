@@ -1,15 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { 
-  Star, Heart, Lightbulb, Rocket, GraduationCap, Brain, 
-  Pencil, Music, Globe, Palette, Sparkles, BookOpen, 
-  Calculator, Code, FlaskConical, Trophy, Target
+  Sparkles, BookOpen, Calculator, FlaskConical, Trophy, Lightbulb
 } from "lucide-react";
-import { FloatingIcon } from "@/components/ui/FloatingIcon";
-import { OwlAvatar, MiniOwl } from "@/components/ui/OwlAvatar";
+import { OwlAvatar } from "@/components/ui/OwlAvatar";
 
 const features = [
   { 
@@ -37,26 +33,10 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-primary/5 to-accent/10 relative overflow-hidden">
-      {/* Floating decorative icons */}
-      <FloatingIcon icon={Star} className="text-accent top-32 left-[10%]" delay={0} />
-      <FloatingIcon icon={Heart} className="text-primary top-48 right-[15%]" delay={0.5} />
-      <FloatingIcon icon={Lightbulb} className="text-accent top-64 left-[5%]" delay={1} />
-      <FloatingIcon icon={Rocket} className="text-primary bottom-48 right-[8%]" delay={1.5} />
-      <FloatingIcon icon={GraduationCap} className="text-primary bottom-32 left-[12%]" delay={2} />
-      <FloatingIcon icon={Brain} className="text-accent top-40 right-[5%]" delay={2.5} />
-      <FloatingIcon icon={Pencil} className="text-primary bottom-64 right-[20%]" delay={3} />
-      <FloatingIcon icon={Music} className="text-accent top-56 left-[20%]" delay={3.5} />
-      <FloatingIcon icon={Globe} className="text-primary bottom-40 left-[25%]" delay={4} />
-      <FloatingIcon icon={Palette} className="text-accent top-72 right-[25%]" delay={4.5} />
-      
-      {/* Mini owls decoration */}
-      <MiniOwl className="absolute top-36 right-[10%] opacity-40" />
-      <MiniOwl className="absolute bottom-52 left-[8%] opacity-40" />
-      <MiniOwl className="absolute top-60 left-[15%] opacity-30" />
+    <div className="relative">
 
       {/* Hero Section */}
-      <section className="relative z-10 text-center py-20 px-4">
+      <section className="text-center py-20 px-4">
         <motion.div 
           className="inline-block mb-6"
           animate={{ y: [0, -10, 0] }}
@@ -137,7 +117,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 py-16 px-4">
+      <section className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 py-16 px-4">
         {features.map((feature, idx) => (
           <motion.div
             key={idx}
@@ -166,7 +146,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      <section className="relative z-10 w-full max-w-4xl mx-auto text-center py-16 px-4">
+      <section className="w-full max-w-4xl mx-auto text-center py-16 px-4">
         <motion.div 
           className="bg-gradient-peachy rounded-cute-lg shadow-cute-lg p-12 border-2 border-primary/20"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -199,7 +179,7 @@ export default function Home() {
       </section>
 
       {/* Fun fact section */}
-      <section className="relative z-10 w-full max-w-2xl mx-auto text-center py-12 px-4">
+      <section className="w-full max-w-2xl mx-auto text-center py-12 px-4">
         <motion.div
           className="bg-card/80 backdrop-blur-md rounded-cute-lg shadow-cute p-6 border-2 border-primary/20"
           initial={{ opacity: 0 }}

@@ -48,10 +48,10 @@ export default function ClassDetailPage() {
 
   if (error || !classData) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="flex items-center justify-center py-20">
         <div className="text-center">
-          <p className="text-xl text-error-600 mb-4">{error || 'Class not found'}</p>
-          <Link href="/lessons" className="text-primary-600 hover:text-primary-700">
+          <p className="text-xl text-destructive mb-4">{error || 'Class not found'}</p>
+          <Link href="/lessons" className="text-primary hover:text-primary/80">
             ← Back to Classes
           </Link>
         </div>
@@ -60,20 +60,20 @@ export default function ClassDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <Link href="/lessons" className="text-primary-600 hover:text-primary-700 mb-6 inline-block">
+        <Link href="/lessons" className="text-primary hover:text-primary/80 mb-6 inline-block">
           ← Back to Classes
         </Link>
 
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <h1 className="text-4xl font-extrabold text-neutral-900 mb-4">
+        <div className="bg-card rounded-xl shadow-lg p-8 mb-8 border-2 border-border">
+          <h1 className="text-4xl font-extrabold text-foreground mb-4">
             {classData.attributes.name}
           </h1>
-          <p className="text-lg text-neutral-600 mb-6">
+          <p className="text-lg text-muted-foreground mb-6">
             {classData.attributes.description || 'No description available'}
           </p>
-          <div className="flex items-center space-x-6 text-sm text-neutral-500">
+          <div className="flex items-center space-x-6 text-sm text-muted-foreground">
             <div className="flex items-center">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -90,28 +90,28 @@ export default function ClassDetailPage() {
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold text-neutral-900 mb-6">Assignments</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-6">Assignments</h2>
           {assignments.length === 0 ? (
-            <div className="bg-white rounded-xl shadow-md p-8 text-center">
-              <p className="text-neutral-600">No assignments yet.</p>
+            <div className="bg-card rounded-xl shadow-md p-8 text-center border-2 border-border">
+              <p className="text-muted-foreground">No assignments yet.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-4">
               {assignments.map((assignment) => (
                 <div
                   key={assignment.id}
-                  className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
+                  className="bg-card rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300 border-2 border-border"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-neutral-900 mb-2">
+                      <h3 className="text-xl font-bold text-foreground mb-2">
                         {assignment.attributes.title}
                       </h3>
                       <div
-                        className="text-neutral-600 mb-4 line-clamp-2"
+                        className="text-muted-foreground mb-4 line-clamp-2"
                         dangerouslySetInnerHTML={{ __html: assignment.attributes.description || '' }}
                       />
-                      <div className="flex items-center space-x-4 text-sm text-neutral-500">
+                      <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                         {assignment.attributes.dueDate && (
                           <span>
                             Due: {new Date(assignment.attributes.dueDate).toLocaleDateString()}

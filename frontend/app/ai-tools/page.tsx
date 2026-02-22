@@ -65,13 +65,13 @@ const categories = ['All', 'Conversational AI', 'Image Generation', 'Writing Ass
 
 export default function AIToolsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-neutral-900 mb-4">
+          <h1 className="text-4xl font-extrabold text-foreground mb-4">
             AI Tools Showcase
           </h1>
-          <p className="text-xl text-neutral-600">
+          <p className="text-xl text-muted-foreground">
             Discover and compare the best AI tools for education
           </p>
         </div>
@@ -103,25 +103,25 @@ export default function AIToolsPage() {
                   <span className="px-3 py-1 text-xs font-medium bg-primary-100 text-primary-700 rounded-full">
                     {tool.category}
                   </span>
-                </div>
-                <p className="text-neutral-600 mb-4 min-h-[3rem]">
-                  {tool.description}
-                </p>
-                <div className="mb-4">
-                  <p className="text-sm font-medium text-neutral-700 mb-2">Key Features:</p>
-                  <ul className="space-y-1">
-                    {tool.features.map((feature, index) => (
-                      <li key={index} className="text-sm text-neutral-600 flex items-center">
+                  </div>
+                  <p className="text-muted-foreground mb-4 min-h-[3rem]">
+                    {tool.description}
+                  </p>
+                  <div className="mb-4">
+                    <p className="text-sm font-medium text-foreground mb-2">Key Features:</p>
+                    <ul className="space-y-1">
+                      {tool.features.map((feature, index) => (
+                        <li key={index} className="text-sm text-muted-foreground flex items-center">
                         <svg className="w-4 h-4 mr-2 text-success-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         {feature}
                       </li>
                     ))}
-                  </ul>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-neutral-200">
-                  <span className="text-sm font-medium text-neutral-700">{tool.pricing}</span>
+                    </ul>
+                  </div>
+                  <div className="flex items-center justify-between pt-4 border-t border-border">
+                    <span className="text-sm font-medium text-foreground">{tool.pricing}</span>
                   <Link
                     href={`/ai-tools/${tool.id}`}
                     className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium"
@@ -135,8 +135,8 @@ export default function AIToolsPage() {
         </div>
 
         {/* Coming Soon Notice */}
-        <div className="mt-12 text-center bg-white rounded-xl shadow-md p-8">
-          <p className="text-neutral-600">
+        <div className="mt-12 text-center bg-card rounded-xl shadow-md p-8 border-2 border-border">
+          <p className="text-muted-foreground">
             More AI tools coming soon! This page will be dynamically populated from our CMS.
           </p>
         </div>

@@ -38,15 +38,15 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-100 to-secondary-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-2xl shadow-xl">
+    <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 min-h-[80vh]">
+      <div className="max-w-md w-full space-y-8 bg-card p-8 rounded-2xl shadow-xl border-2 border-border">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-neutral-900">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-foreground">
             Sign in to SkillSpark
           </h2>
-          <p className="mt-2 text-center text-sm text-neutral-600">
+          <p className="mt-2 text-center text-sm text-muted-foreground">
             Or{' '}
-            <Link href="/auth/register" className="font-medium text-primary-600 hover:text-primary-500">
+            <Link href="/auth/register" className="font-medium text-primary hover:text-primary/80">
               create a new account
             </Link>
           </p>
@@ -59,7 +59,7 @@ export default function LoginPage() {
           )}
           <div className="rounded-md shadow-sm space-y-4">
             <div>
-              <label htmlFor="identifier" className="block text-sm font-medium text-neutral-700 mb-1">
+              <label htmlFor="identifier" className="block text-sm font-medium text-foreground mb-1">
                 Email or Username
               </label>
               <input
@@ -68,14 +68,14 @@ export default function LoginPage() {
                 type="text"
                 autoComplete="email"
                 required
-                className="appearance-none relative block w-full px-3 py-2 border border-neutral-300 placeholder-neutral-500 text-neutral-900 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm"
+                className="appearance-none relative block w-full px-3 py-2 border-2 border-border placeholder-muted-foreground text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary focus:z-10 sm:text-sm bg-card"
                 placeholder="Enter your email or username"
                 value={formData.identifier}
                 onChange={handleChange}
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-neutral-700 mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-foreground mb-1">
                 Password
               </label>
               <input
@@ -84,7 +84,7 @@ export default function LoginPage() {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="appearance-none relative block w-full px-3 py-2 border border-neutral-300 placeholder-neutral-500 text-neutral-900 rounded-lg focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm"
+                className="appearance-none relative block w-full px-3 py-2 border-2 border-border placeholder-muted-foreground text-foreground rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary focus:z-10 sm:text-sm bg-card"
                 placeholder="Enter your password"
                 value={formData.password}
                 onChange={handleChange}
@@ -98,15 +98,15 @@ export default function LoginPage() {
                 id="remember-me"
                 name="remember-me"
                 type="checkbox"
-                className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-neutral-300 rounded"
+                className="h-4 w-4 text-primary focus:ring-primary border-border rounded"
               />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-neutral-900">
+              <label htmlFor="remember-me" className="ml-2 block text-sm text-foreground">
                 Remember me
               </label>
             </div>
 
             <div className="text-sm">
-              <Link href="/auth/forgot-password" className="font-medium text-primary-600 hover:text-primary-500">
+              <Link href="/auth/forgot-password" className="font-medium text-primary hover:text-primary/80">
                 Forgot your password?
               </Link>
             </div>
@@ -116,7 +116,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-primary-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
             >
               {loading ? 'Signing in...' : 'Sign in'}
             </button>

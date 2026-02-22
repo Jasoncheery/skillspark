@@ -1,6 +1,6 @@
 # Frontend Development Progress
 
-**Last Updated**: 2026-02-17
+**Last Updated**: 2026-02-22
 
 ## ✅ Completed
 
@@ -9,6 +9,8 @@
 - ✅ TypeScript configuration
 - ✅ TailwindCSS 4 with shadcn/ui setup
 - ✅ Dependencies installed (framer-motion, lucide-react, zustand, etc.)
+- ✅ Cute Japanese-style theme (yellow & blue color palette)
+- ✅ Global animated background with floating icons and owl mascots
 
 ### 2. Strapi Integration
 - ✅ Created Strapi API client (`lib/strapi.ts`)
@@ -45,27 +47,47 @@
   - Filter by owner
 
 ### 4. Layout Components
+- ✅ AppShell component (`components/layout/AppShell.tsx`)
+  - Global wrapper for all pages
+  - Animated floating icons (stars, hearts, lightbulbs, etc.)
+  - Mini owl mascots for branding
+  - Adaptive decoration density (full for marketing pages, reduced for inner pages)
+  - Consistent gradient background across all pages
 - ✅ Header component with navigation
   - Links to all main pages
-  - SkillSpark branding
+  - SkillSpark branding with gradient logo
+  - Emoji-based navigation icons
+  - Glassmorphism effect
+  - Hover animations
   - Responsive design
 - ✅ Footer component
-  - Copyright information
-  - Links to legal pages
+  - Gradient background matching theme
+  - Brand logo and tagline
+  - Quick links and legal sections
+  - "Made with 💙 and 💛" message
   - Centered layout
 
 ### 5. Authentication Pages
+- ✅ **Authentication System: Strapi Users-Permissions**
+  - JWT-based authentication
+  - Token stored in localStorage
+  - `/auth/local` endpoint for login
+  - `/auth/local/register` endpoint for registration
 - ✅ Login page (`app/auth/login/page.tsx`)
   - Email/username and password fields
   - Form validation
   - Error handling
   - Remember me checkbox
   - Forgot password link
+  - Themed with semantic design tokens
 - ✅ Register page (`app/auth/register/page.tsx`)
   - Username, email, password fields
   - Password confirmation
   - Form validation
   - Error handling
+  - Themed with semantic design tokens
+
+**Note**: The authentication system uses **Strapi Users-Permissions**, not Supabase. Older documentation referencing Supabase/Vite is legacy and should be disregarded.
 
 ### 6. Core Pages
 
@@ -113,14 +135,38 @@
   - Quick action cards
   - Protected route (requires authentication)
 
-### 7. Homepage
-- ✅ Hero section with SkillSpark branding
-- ✅ Features section with icons
-- ✅ Call-to-action buttons
-- ✅ Responsive design with animations
+### 7. Homepage & Design System
+- ✅ Hero section with animated owl mascot
+- ✅ Features section with gradient cards and hover effects
+- ✅ Call-to-action buttons with animations
+- ✅ Fun fact section with glassmorphism
+- ✅ Responsive design with framer-motion animations
+- ✅ Design system (`lib/design-system.ts`)
+  - Cute Japanese-style color palette (soft blue, warm yellow, peachy pink)
+  - Custom animations (float, bounce-gentle, wave, fade-in-up, scale-in)
+  - Semantic design tokens (primary, secondary, accent, foreground, background, etc.)
+  - Custom border radius and shadows
+- ✅ Global CSS (`app/globals.css`)
+  - CSS custom properties for colors
+  - Keyframe animations
+  - Utility classes (shadow-cute, rounded-cute, hover-lift, etc.)
+  - Gradient backgrounds
+- ✅ Reusable UI components
+  - `FloatingIcon.tsx`: Animated floating decorative icons
+  - `OwlAvatar.tsx`: Animated owl mascot (large and mini versions)
 
 ### 8. Environment Configuration
 - ✅ Created `.env.example` with Strapi URL configuration
+
+### 9. Global Theme Normalization
+- ✅ All pages now use semantic design tokens instead of hardcoded colors
+  - `bg-card` instead of `bg-white`
+  - `text-foreground` instead of `text-neutral-900`
+  - `text-muted-foreground` instead of `text-neutral-600`
+  - `border-border` instead of `border-neutral-200`
+- ✅ Removed per-page background gradients (now handled by AppShell)
+- ✅ Consistent color tone across all pages (lessons, ai-tools, blog, dashboard, auth)
+- ✅ Global Header and Footer rendered on every page via AppShell
 
 ## 🔄 In Progress
 
@@ -131,9 +177,9 @@ Currently all planned features are completed. Next steps depend on backend conte
 ```
 frontend/
 ├── app/
-│   ├── layout.tsx              ✅ Updated with Header/Footer
-│   ├── page.tsx                ✅ Homepage with hero and features
-│   ├── globals.css             ✅ Tailwind + shadcn setup
+│   ├── layout.tsx              ✅ Wraps children with AppShell
+│   ├── page.tsx                ✅ Homepage with animated hero and features
+│   ├── globals.css             ✅ Tailwind + custom animations + theme tokens
 │   ├── auth/
 │   │   ├── login/
 │   │   │   └── page.tsx        ✅ Login page
@@ -154,9 +200,13 @@ frontend/
 │   └── dashboard/
 │       └── page.tsx            ✅ User dashboard
 ├── components/
-│   └── layout/
-│       ├── Header.tsx          ✅ Navigation header
-│       └── Footer.tsx          ✅ Footer with links
+│   ├── layout/
+│   │   ├── AppShell.tsx        ✅ Global shell with animated background
+│   │   ├── Header.tsx          ✅ Navigation header with cute theme
+│   │   └── Footer.tsx          ✅ Footer with gradient background
+│   └── ui/
+│       ├── FloatingIcon.tsx    ✅ Animated floating icons
+│       └── OwlAvatar.tsx       ✅ Owl mascot components
 ├── lib/
 │   ├── strapi.ts               ✅ Strapi API client
 │   ├── utils.ts                ✅ Utility functions
@@ -207,11 +257,14 @@ The app will be available at `http://localhost:3000`
 
 - All components use Next.js App Router
 - TypeScript for type safety throughout
-- TailwindCSS with design system colors
-- Authentication uses JWT tokens stored in localStorage
+- TailwindCSS with custom design system (cute Japanese-style theme)
+- **Authentication**: Strapi Users-Permissions with JWT (stored in localStorage)
+  - **Not Supabase**: Older docs mentioning Supabase/Vite are legacy
 - All API services include proper error handling
 - Protected routes redirect to login if not authenticated
 - AI Tools and Blog pages use placeholder data until backend content types are added
+- Global AppShell provides consistent animated background and layout across all pages
+- All pages use semantic design tokens for consistent theming
 
 ## 🎯 Next Development Priorities
 
