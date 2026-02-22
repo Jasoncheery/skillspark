@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -7,10 +7,7 @@ import { authService } from '@/services';
 
 export default function LoginPage() {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    identifier: '',
-    password: '',
-  });
+  const [formData, setFormData] = useState({ identifier: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -23,7 +20,8 @@ export default function LoginPage() {
       await authService.login(formData);
       router.push('/dashboard');
     } catch (err) {
-      setError('Invalid email or password. Please try again.');
+      const errorMessage = err instanceof Error ? err.message : 'Invalid email or password. Please try again.';
+      setError(errorMessage);
       console.error('Login error:', err);
     } finally {
       setLoading(false);
@@ -53,7 +51,7 @@ export default function LoginPage() {
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {error && (
-            <div className="bg-error-100 border border-error-400 text-error-700 px-4 py-3 rounded-lg" role="alert">
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg" role="alert">
               <span className="block sm:inline">{error}</span>
             </div>
           )}

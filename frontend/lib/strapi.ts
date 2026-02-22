@@ -21,8 +21,20 @@ async function fetchApi(path: string, urlParamsObject = {}, options = {}) {
   const response = await fetch(requestUrl, mergedOptions);
 
   if (!response.ok) {
-    console.error(response.statusText);
-    throw new Error(`An error occured please try again.`);
+    let errorMessage = `An error occurred please try again.`;
+    try {
+      const errorData = await response.json();
+      if (errorData.error && errorData.error.message) {
+        errorMessage = errorData.error.message;
+      } else if (errorData.message) {
+        errorMessage = errorData.message;
+      }
+    } catch (e) {
+      // If we can't parse JSON, use status text
+      errorMessage = response.statusText || errorMessage;
+    }
+    console.error(`Strapi API Error: ${errorMessage}`);
+    throw new Error(errorMessage);
   }
 
   const data = await response.json();
