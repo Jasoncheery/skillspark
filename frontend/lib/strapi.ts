@@ -7,12 +7,13 @@ import qs from 'qs';
 
 const STRAPI_API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337/api';
 
-async function fetchApi(path: string, urlParamsObject = {}, options = {}) {
+async function fetchApi(path: string, urlParamsObject = {}, options: any = {}) {
   const mergedOptions = {
+    ...options,
     headers: {
       'Content-Type': 'application/json',
+      ...options.headers,
     },
-    ...options,
   };
 
   const queryString = qs.stringify(urlParamsObject);
