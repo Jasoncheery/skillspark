@@ -36,17 +36,22 @@ export const authService = {
   // Get current user
   async getCurrentUser(): Promise<StrapiUser | null> {
     const token = this.getToken();
-    if (!token) return null;
+    if (!token) {
+      console.log('[Auth] No token found in localStorage');
+      return null;
+    }
 
+    console.log('[Auth] Token found, fetching current user...');
     try {
       const response = await strapi.get('/users/me', {}, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log('[Auth] Current user fetched successfully:', response);
       return response;
     } catch (error) {
-      console.error('Failed to get current user:', error);
+      console.error('[Auth] Failed to get current user:', error);
       this.logout();
       return null;
     }
